@@ -1,5 +1,9 @@
 const AsistSalida = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Registro de salida</h1>
+    </div>
+  );
 };
 
 export default AsistSalida;

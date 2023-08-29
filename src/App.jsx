@@ -1,32 +1,39 @@
-import { Box, Button, Card, Flex, Text, Avatar } from "@radix-ui/themes";
 import "./App.css";
+import Home from "/src/pages/home";
+import AsistEntrada from "/src/pages/asistEntrada";
+import AsistInformeGeneral from "/src/pages/asistInformeGeneral";
+import AsistInformeVisual from "../src/pages/asistInformeVisual";
+import AsistPrincipal from "../src/pages/asistPrincipal";
+import AsistSalida from "../src/pages/asistSalida";
+import TyVLicencias from "../src/pages/tyvLicencias";
+import TyVPrincipal from "../src/pages/tyvPrincipal";
+import TyVTrabajadores from "../src/pages/tyvTrabajadores";
+import TyVVehiculos from "../src/pages/tyvVehiculos";
+import User from "../src/pages/user";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="grid h-screen place-items-center ">
-      <h1 className="text-3xl font-bold underline ">Hola Mundo!</h1>
-      <Button size="4" variant="classic">
-        Botón
-      </Button>
-      <Card>
-        <Flex gap={"3"} align={"center"}>
-          <Avatar
-            size="3"
-            src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop"
-            radius="full"
-            fallback="T"
-          />
-          <Box>
-            <Text as="div" weight="bold" className="text-xl">
-              Texto de prueba en Card
-            </Text>
-            <Text as="div" size="2" weight="gray">
-              subtitulo
-            </Text>
-          </Box>
-        </Flex>
-      </Card>
-      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/asistencia-entrada" element={<AsistEntrada />} />
+        <Route
+          path="/asistencia-informe-general"
+          element={<AsistInformeGeneral />}
+        />
+        <Route
+          path="/asistencia-informe-visual"
+          element={<AsistInformeVisual />}
+        />
+        <Route path="/asistencia-general" element={<AsistPrincipal />} />
+        <Route path="/asistencia-salida" element={<AsistSalida />} />
+        <Route path="/tyv-licencias" element={<TyVLicencias />} />
+        <Route path="/tyv-general" element={<TyVPrincipal />} />
+        <Route path="/tyv-trabajadores" element={<TyVTrabajadores />} />
+        <Route path="/tyv-vehiculos" element={<TyVVehiculos />} />
+        <Route path="/user" element={<User />} />
+      </Routes>
     </div>
   );
 }

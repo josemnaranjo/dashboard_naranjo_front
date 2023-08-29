@@ -1,5 +1,9 @@
 const AsistInformeVisual = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Asistencia informe visual</h1>
+    </div>
+  );
 };
 
 export default AsistInformeVisual;
