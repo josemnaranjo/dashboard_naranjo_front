@@ -10,13 +10,17 @@ import TyVPrincipal from "../src/pages/tyvPrincipal";
 import TyVTrabajadores from "../src/pages/tyvTrabajadores";
 import TyVVehiculos from "../src/pages/tyvVehiculos";
 import User from "../src/pages/user";
+import Navbar from "../src/layouts/Navbar";
+import Sidebar from "./layouts/Sidebar";
 import { UserProvider } from "../src/context/userContext";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="grid h-screen place-items-center ">
-      <UserProvider>
+    <UserProvider>
+      <div className=" flex font-poppins">
+        <Navbar />
+        <Sidebar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/asistencia-entrada" element={<AsistEntrada />} />
@@ -36,8 +40,8 @@ function App() {
           <Route path="/tyv-vehiculos" element={<TyVVehiculos />} />
           <Route path="/user" element={<User />} />
         </Routes>
-      </UserProvider>
-    </div>
+      </div>
+    </UserProvider>
   );
 }
 

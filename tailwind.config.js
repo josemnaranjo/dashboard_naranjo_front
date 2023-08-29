@@ -2,14 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    theme: {
+    extend: {
       colors: {
-        "primary-light": "#FCBB14",
-        "primary-middle": "#FFBF1A",
-        "primary-dark": "#FFBF18",
-        "secondary-light": "#6272EE",
-        "secondary-middle": "#374BE5",
-        "secondary-dark": "#2236D6",
+        "primary-light": "rgba(252, 187, 20, 0.58)",
+        "primary-middle": "rgba(255, 191, 26, 0.85)",
+        "primary-dark": "rgba(255, 191, 24, 1)",
+
+        "secondary-light": "rgba(98, 114, 238, 1)",
+        "secondary-middle": "rgba(55, 75, 229, 0.97)",
+        "secondary-dark": "rgba(34, 54, 214, 1)",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -20,7 +21,6 @@ export default {
         base: "14px",
       },
     },
-    extend: {},
   },
   plugins: [],
 };
