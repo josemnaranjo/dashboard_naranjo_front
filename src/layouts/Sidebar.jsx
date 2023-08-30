@@ -1,6 +1,6 @@
 const Sidebar = () => {
   return (
-    <div className="bg-secondary-dark h-screen w-[10rem] rounded-r-2xl ">
+    <div className="bg-secondary-dark h-screen rounded-r-2xl ">
       <div>
         <h1>Subtitulo 1</h1>
       </div>

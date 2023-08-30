@@ -19,30 +19,34 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <UserProvider>
-      <div className="flex font-poppins">
-        <Sidebar />
-        <Navbar />
-        <Frame>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/asistencia-entrada" element={<AsistEntrada />} />
-            <Route
-              path="/asistencia-informe-general"
-              element={<AsistInformeGeneral />}
-            />
-            <Route
-              path="/asistencia-informe-visual"
-              element={<AsistInformeVisual />}
-            />
-            <Route path="/asistencia-general" element={<AsistPrincipal />} />
-            <Route path="/asistencia-salida" element={<AsistSalida />} />
-            <Route path="/tyv-licencias" element={<TyVLicencias />} />
-            <Route path="/tyv-general" element={<TyVPrincipal />} />
-            <Route path="/tyv-trabajadores" element={<TyVTrabajadores />} />
-            <Route path="/tyv-vehiculos" element={<TyVVehiculos />} />
-            <Route path="/user" element={<User />} />
-          </Routes>
-        </Frame>
+      <div className="grid grid-cols-12 font-poppins">
+        <div className="col-span-1">
+          <Sidebar />
+        </div>
+        <div className="col-span-11">
+          <Frame>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/asistencia-entrada" element={<AsistEntrada />} />
+              <Route
+                path="/asistencia-informe-general"
+                element={<AsistInformeGeneral />}
+              />
+              <Route
+                path="/asistencia-informe-visual"
+                element={<AsistInformeVisual />}
+              />
+              <Route path="/asistencia-general" element={<AsistPrincipal />} />
+              <Route path="/asistencia-salida" element={<AsistSalida />} />
+              <Route path="/tyv-licencias" element={<TyVLicencias />} />
+              <Route path="/tyv-general" element={<TyVPrincipal />} />
+              <Route path="/tyv-trabajadores" element={<TyVTrabajadores />} />
+              <Route path="/tyv-vehiculos" element={<TyVVehiculos />} />
+              <Route path="/user" element={<User />} />
+            </Routes>
+          </Frame>
+        </div>
       </div>
     </UserProvider>
   );
