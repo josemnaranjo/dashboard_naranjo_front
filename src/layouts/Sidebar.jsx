@@ -11,7 +11,7 @@ import {
 } from "react-icons/bs";
 const Sidebar = () => {
   return (
-    <div className="bg-secondary-dark text-white text-base h-screen rounded-r-2xl grid grid-rows-2 place-content-center place-items-center px-4">
+    <div className="bg-secondary-dark text-white text-base h-screen rounded-r-2xl grid grid-rows-2 place-content-center place-items-center drop-shadow-sidebar">
       <div className="grid grid-rows-4">
         <Link
           to="/tyv-general"
