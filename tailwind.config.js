@@ -21,7 +21,7 @@ export default {
         base: "14px",
       },
       dropShadow: {
-        sidebar: "8px 9px 4px rgb(56, 53, 53)",
+        sidebar: "8px 9px 4px rgb(0, 0, 0, 0.35)",
       },
     },
   },
