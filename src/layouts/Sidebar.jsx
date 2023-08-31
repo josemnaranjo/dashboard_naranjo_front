@@ -46,8 +46,38 @@ const Sidebar = () => {
         </Link>
       </div>
 
-      <div>
-        <h1>Subtitulo 2</h1>
+      <div className="grid grid-rows-4">
+        <Link
+          to="/asistencia-general"
+          className="flex justify-center items-center font-bold"
+        >
+          <BsBook className="w-14 h-12" />
+          <h1 className="pl-1">asistencias</h1>
+        </Link>
+
+        <Link
+          to="/asistencia-entrada"
+          className="flex justify-center items-center hover:text-primary-dark hover:drop-shadow-lg "
+        >
+          <BsArrowRight className="w-10 h-4" />
+          <h1>entrada</h1>
+        </Link>
+
+        <Link
+          to="/asistencia-salida"
+          className="flex justify-center items-center hover:text-primary-dark hover:drop-shadow-lg  "
+        >
+          <BsArrowLeft className="w-9 h-4" />
+          <h1>salida</h1>
+        </Link>
+
+        <Link
+          to="/asistencia-informe-general"
+          className="flex justify-center items-center hover:text-primary-dark hover:drop-shadow-lg "
+        >
+          <BsJournal className="w-9 h-4" />
+          <h1>informes</h1>
+        </Link>
       </div>
     </div>
   );
