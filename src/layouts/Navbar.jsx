@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <div className="bg-primary-dark rounded-2xl">
+    <div className="bg-primary-dark rounded-l-lg">
       <div>
         <h1>Subtitulo 1</h1>
       </div>

@@ -24,8 +24,8 @@ function App() {
           <Sidebar />
         </div>
         <div className="col-span-11">
-          <Frame>
             <Navbar />
+          <Frame>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/asistencia-entrada" element={<AsistEntrada />} />
