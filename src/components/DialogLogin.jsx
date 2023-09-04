@@ -1,7 +1,7 @@
 import { Button, Dialog, Flex, TextField } from "@radix-ui/themes";
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
 
-const DialogLogin = () => {
+const DialogLogin = ({ handleLogin }) => {
   return (
     <div>
       <Dialog.Root>
@@ -34,7 +34,15 @@ const DialogLogin = () => {
 
             <Flex align="center" gap="3">
               <Dialog.Close>
-                <Button>aceptar</Button>
+                <Button
+                  variant="outline"
+                  style={{
+                    color: "white",
+                    borderColor: "rgba(34, 54, 214, 1)",
+                  }}
+                >
+                  aceptar
+                </Button>
               </Dialog.Close>
               <Dialog.Close>
                 <Button style={{ backgroundColor: "rgba(255, 191, 26, 0.85)" }}>
