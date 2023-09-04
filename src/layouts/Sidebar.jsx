@@ -11,15 +11,14 @@ import Logoempresa from "../assets/images/LogoEmpresa.png";
 
 const Sidebar = () => {
   return (
-    <div className="bg-secondary-dark text-white text-base h-screen rounded-r-2xl drop-shadow-sidebar flex flex-col gap-12">
-      
-      <div>
-        <img src={Logoempresa} alt="logo empresa" className="mt-5 ml-3 w-5/6" />
+    <div className="bg-secondary-dark text-white text-base h-screen rounded-br-xl rounded-tr-lg drop-shadow-sidebar flex flex-col gap-12">
+      <div className="bg-primary-dark rounded-tr-lg rounded-bl-lg p-3 drop-shadow-lg">
+        <img src={Logoempresa} alt="logo empresa" className="mt-2 ml-2 w-5/6" />
       </div>
 
       <div className="grid grid-rows-4 gap-2">
         <Link to="/tyv-general" className=" text-center font-bold">
-          <h1 className="pl-1 hover:underline hover:underline-offset-2">
+          <h1 className="pl-1 hover:underline hover:underline-offset-2 xl:text-ellipsis">
             trabajadores y vehículos
           </h1>
         </Link>
