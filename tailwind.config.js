@@ -17,8 +17,9 @@ export default {
       },
       fontSize: {
         xl: "40px",
-        lg: "28px",
-        base: "14px",
+        lg: "14px",
+        base: "12px",
+        label: "10px",
       },
       dropShadow: {
         sidebar: "8px 9px 4px rgb(0, 0, 0, 0.35)",
