@@ -11,8 +11,8 @@ import Logoempresa from "../assets/images/LogoEmpresa.png";
 
 const Sidebar = () => {
   return (
-    <div className="bg-secondary-dark text-white text-base h-screen rounded-br-xl rounded-tr-lg drop-shadow-sidebar flex flex-col gap-12">
-      <div className="bg-primary-dark rounded-tr-lg rounded-bl-lg p-3 drop-shadow-lg">
+    <div className="bg-secondary-dark text-white text-base h-screen rounded-br-xl rounded-tl-lg drop-shadow-sidebar flex flex-col gap-12">
+      <div className="bg-primary-dark rounded-br-lg p-3 drop-shadow-lg">
         <img src={Logoempresa} alt="logo empresa" className="mt-1 ml-2 w-5/6" />
       </div>
 
