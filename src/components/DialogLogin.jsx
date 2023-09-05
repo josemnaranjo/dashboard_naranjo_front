@@ -8,7 +8,7 @@ const DialogLogin = ({ handleLogin }) => {
         <Dialog.Trigger>
           <Button variant="solid">
             <BsBoxArrowInRight />
-            Login
+            login
           </Button>
         </Dialog.Trigger>
 
