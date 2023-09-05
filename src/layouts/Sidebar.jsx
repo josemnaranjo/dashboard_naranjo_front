@@ -11,7 +11,7 @@ import Logoempresa from "../assets/images/LogoEmpresa.png";
 
 const Sidebar = () => {
   return (
-    <div className="bg-secondary-dark text-white text-base h-screen rounded-br-xl rounded-tl-lg drop-shadow-sidebar flex flex-col gap-12">
+    <div className="bg-secondary-dark text-white text-base h-screen rounded-br-xl rounded-tl-lg drop-shadow-sidebar flex flex-col gap-8">
       <div className="bg-primary-dark rounded-br-lg p-3 drop-shadow-lg">
         <img src={Logoempresa} alt="logo empresa" className="mt-1 ml-2 w-5/6" />
       </div>
@@ -23,6 +23,7 @@ const Sidebar = () => {
           </h1>
         </Link>
 
+        
         <Link
           to="/tyv-trabajadores"
           className="flex items-center pl-6 hover:text-primary-dark hover:drop-shadow-lg "
@@ -47,7 +48,9 @@ const Sidebar = () => {
           <h1 className="ml-2">agregar vehículos</h1>
         </Link>
       </div>
+      
 
+      
       <div className="grid grid-rows-4 gap-1">
         <Link to="/asistencia-general" className="text-center font-bold">
           <h1 className="pl-1 text-lg hover:underline hover:underline-offset-2">

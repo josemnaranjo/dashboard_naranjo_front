@@ -7,7 +7,7 @@ const Navbar = () => {
     console.log(value);
   };
   return (
-    <div className="bg-primary-dark text-white p-2 ">
+    <div className="bg-primary-dark text-white p-2">
       <div className="flex justify-end gap-3">
         <Link
           to="/user"
