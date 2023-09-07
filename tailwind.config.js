@@ -11,6 +11,8 @@ export default {
         "secondary-light": "rgba(98, 114, 238, 1)",
         "secondary-middle": "rgba(55, 75, 229, 0.97)",
         "secondary-dark": "rgba(34, 54, 214, 1)",
+
+        "frame" :"rgba(238,238,238,1)"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

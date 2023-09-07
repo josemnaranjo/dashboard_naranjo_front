@@ -5,6 +5,9 @@ const User = () => {
   const handleSubmit = (value) => {
     console.log(value);
   };
+
+  
+
   return (
     <div>
       <Formik
@@ -19,7 +22,7 @@ const User = () => {
           resetForm();
         }}
       >
-        <Form className="bg-red-700 container mx-auto w-96 p-8 rounded-md grid grid-rows-6 gap-3">
+        <Form className="bg-slate-400 text-white container mx-auto w-96 p-8 rounded-md grid grid-rows-6 gap-3">
           <h1 className="text-xl font-bold">Formulario de registro</h1>
           <div className="flex flex-col">
             <label htmlFor="name">nombre</label>
@@ -61,7 +64,9 @@ const User = () => {
             />
           </div>
 
-          <Button variant="solid">crear</Button>
+          <Button variant="solid">
+            crear
+          </Button>
         </Form>
       </Formik>
     </div>

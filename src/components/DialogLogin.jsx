@@ -6,13 +6,9 @@ const DialogLogin = ({ handleLogin }) => {
     backgroundColor: "rgba(55, 75, 229, 0.97)",
     color: "white",
   };
-  const cancelButtonStyle = {
-    backgroundColor: "rgba(255, 191, 26, 0.85)",
-  };
 
   const aceptButtonStyle = {
     color: "white",
-    borderColor: "rgba(34, 54, 214, 1)",
   };
   return (
     <div>
@@ -35,18 +31,18 @@ const DialogLogin = ({ handleLogin }) => {
             <Flex direction="column">
               <label>
                 <p>constraseña</p>
-                <TextField.Input />
+                <TextField.Input type="password" />
               </label>
             </Flex>
 
             <Flex align="center" gap="3">
               <Dialog.Close>
-                <Button variant="outline" style={aceptButtonStyle}>
+                <Button color="amber" style={aceptButtonStyle}>
                   aceptar
                 </Button>
               </Dialog.Close>
               <Dialog.Close>
-                <Button style={cancelButtonStyle}>cancelar</Button>
+                <Button >cancelar</Button>
               </Dialog.Close>
             </Flex>
           </Flex>
