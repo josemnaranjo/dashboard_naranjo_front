@@ -2,6 +2,18 @@ import { Button, Dialog, Flex, TextField } from "@radix-ui/themes";
 import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
 
 const DialogLogin = ({ handleLogin }) => {
+  const cardStyle = {
+    backgroundColor: "rgba(55, 75, 229, 0.97)",
+    color: "white",
+  };
+  const cancelButtonStyle = {
+    backgroundColor: "rgba(255, 191, 26, 0.85)",
+  };
+
+  const aceptButtonStyle = {
+    color: "white",
+    borderColor: "rgba(34, 54, 214, 1)",
+  };
   return (
     <div>
       <Dialog.Root>
@@ -12,12 +24,7 @@ const DialogLogin = ({ handleLogin }) => {
           </Button>
         </Dialog.Trigger>
 
-        <Dialog.Content
-          style={{
-            backgroundColor: "rgba(55, 75, 229, 0.97)",
-            color: "white",
-          }}
-        >
+        <Dialog.Content style={cardStyle}>
           <Flex gap="5">
             <Flex direction="column">
               <label>
@@ -34,20 +41,12 @@ const DialogLogin = ({ handleLogin }) => {
 
             <Flex align="center" gap="3">
               <Dialog.Close>
-                <Button
-                  variant="outline"
-                  style={{
-                    color: "white",
-                    borderColor: "rgba(34, 54, 214, 1)",
-                  }}
-                >
+                <Button variant="outline" style={aceptButtonStyle}>
                   aceptar
                 </Button>
               </Dialog.Close>
               <Dialog.Close>
-                <Button style={{ backgroundColor: "rgba(255, 191, 26, 0.85)" }}>
-                  cancelar
-                </Button>
+                <Button style={cancelButtonStyle}>cancelar</Button>
               </Dialog.Close>
             </Flex>
           </Flex>
