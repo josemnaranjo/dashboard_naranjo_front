@@ -18,12 +18,11 @@ const Sidebar = () => {
 
       <div className="grid grid-rows-4 gap-1">
         <Link to="/tyv-general" className=" text-center font-bold">
-          <h1 className="pl-1 text-base hover:underline hover:underline-offset-2">
+          <h1 className="px-2 text-lg hover:underline hover:underline-offset-2">
             TRABAJADORES Y VEHICULOS
           </h1>
         </Link>
 
-        
         <Link
           to="/tyv-trabajadores"
           className="flex items-center pl-6 hover:text-primary-dark hover:drop-shadow-lg "
@@ -48,12 +47,10 @@ const Sidebar = () => {
           <h1 className="ml-2">agregar vehículos</h1>
         </Link>
       </div>
-      
 
-      
       <div className="grid grid-rows-4 gap-1">
         <Link to="/asistencia-general" className="text-center font-bold">
-          <h1 className="pl-1 text-base hover:underline hover:underline-offset-2">
+          <h1 className="text-lg hover:underline hover:underline-offset-2">
             ASISTENCIAS
           </h1>
         </Link>

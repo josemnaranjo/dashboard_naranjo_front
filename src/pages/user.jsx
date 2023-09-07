@@ -6,8 +6,6 @@ const User = () => {
     console.log(value);
   };
 
-  
-
   return (
     <div>
       <Formik
@@ -30,7 +28,7 @@ const User = () => {
               id="name"
               type="text"
               name="name"
-              className="w-38 rounded-lg px-2"
+              className="w-38 rounded-lg px-2 text-black"
             />
           </div>
 
@@ -40,7 +38,7 @@ const User = () => {
               id="lastName"
               type="text"
               name="lastName"
-              className="w-38 rounded-lg px-2"
+              className="w-38 rounded-lg px-2 text-black"
             />
           </div>
 
@@ -50,7 +48,7 @@ const User = () => {
               id="email"
               type="text"
               name="email"
-              className="w-38 rounded-lg px-2"
+              className="w-38 rounded-lg px-2 text-black"
             />
           </div>
 
@@ -60,13 +58,11 @@ const User = () => {
               id="password"
               type="password"
               name="password"
-              className="w-38 rounded-lg px-2"
+              className="w-38 rounded-lg px-2 text-black"
             />
           </div>
 
-          <Button variant="solid">
-            crear
-          </Button>
+          <Button variant="solid">crear</Button>
         </Form>
       </Formik>
     </div>
