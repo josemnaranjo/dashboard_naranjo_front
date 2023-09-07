@@ -13,7 +13,13 @@ const Sidebar = () => {
   return (
     <div className="bg-secondary-dark text-white text-base h-screen drop-shadow-sidebar flex flex-col gap-8">
       <div className="bg-primary-dark rounded-br-lg p-3 drop-shadow-lg">
-        <img src={Logoempresa} alt="logo empresa" className="mt-1 ml-2 w-5/6" />
+        <Link to="/">
+          <img
+            src={Logoempresa}
+            alt="logo empresa"
+            className="mt-1 ml-2 w-5/6"
+          />
+        </Link>
       </div>
 
       <div className="grid grid-rows-4 gap-1">
