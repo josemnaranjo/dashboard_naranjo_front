@@ -42,20 +42,12 @@ const Navbar = () => {
             <BsPersonAdd />
             <p className="text-base">nuevo usuario</p>
           </Link>
-          <DialogLogin handleLogin={handleLogin} />
+          <DialogLogin/>
         </div>
       );
     }
   };
 
-  const handleLogin = async (value) => {
-    const response = await login(value);
-    if (response.data.mensaje === "Sesión iniciada con éxito") {
-      setUser(response.data.user);
-    } else {
-      console.log(response);
-    }
-  };
   return (
     <div className="bg-primary-dark text-white p-2">
       <div className="flex justify-end gap-3">{renderInfo()}</div>

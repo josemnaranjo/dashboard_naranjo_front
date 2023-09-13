@@ -1,15 +1,16 @@
-import { Button, Dialog, Flex, TextField } from "@radix-ui/themes";
-import { BsBoxArrowInRight, BsBoxArrowInLeft } from "react-icons/bs";
+import { Button, Dialog, Flex } from "@radix-ui/themes";
+import { BsBoxArrowInRight } from "react-icons/bs";
+import Loginform from "../components/Loginform";
 
-const DialogLogin = ({ handleLogin }) => {
+const DialogLogin = () => {
   const cardStyle = {
     backgroundColor: "rgba(55, 75, 229, 0.97)",
     color: "white",
+    width: "fit-content",
+    padding: "15px",
   };
 
-  const aceptButtonStyle = {
-    color: "white",
-  };
+  const handleSubmit = () => {};
   return (
     <div>
       <Dialog.Root>
@@ -21,31 +22,7 @@ const DialogLogin = ({ handleLogin }) => {
         </Dialog.Trigger>
 
         <Dialog.Content style={cardStyle}>
-          <Flex gap="5">
-            <Flex direction="column">
-              <label>
-                <p>rut</p>
-                <TextField.Input />
-              </label>
-            </Flex>
-            <Flex direction="column">
-              <label>
-                <p>constraseña</p>
-                <TextField.Input type="password" />
-              </label>
-            </Flex>
-
-            <Flex align="center" gap="3">
-              <Dialog.Close>
-                <Button color="amber" style={aceptButtonStyle}>
-                  aceptar
-                </Button>
-              </Dialog.Close>
-              <Dialog.Close>
-                <Button >cancelar</Button>
-              </Dialog.Close>
-            </Flex>
-          </Flex>
+          <Loginform handleSubmit={handleSubmit} />
         </Dialog.Content>
       </Dialog.Root>
     </div>
