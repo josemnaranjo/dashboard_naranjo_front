@@ -16,3 +16,6 @@ export const logout = async () => {
     return { success: false, data: { errors: { error: error } } };
   }
 };
+
+export const login = async (user) =>
+  await axios.post("http://localhost:8000/login", user);

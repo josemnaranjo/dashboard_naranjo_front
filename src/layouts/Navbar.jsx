@@ -3,7 +3,7 @@ import { Button } from "@radix-ui/themes";
 import { BsPersonAdd, BsBoxArrowInLeft } from "react-icons/bs";
 import DialogLogin from "../components/DialogLogin";
 import { useUser } from "../context/userContext";
-import { logout } from "../api/user.services";
+import { logout, login } from "../api/user.services";
 
 const Navbar = () => {
   const { user, setUser } = useUser();
@@ -48,8 +48,13 @@ const Navbar = () => {
     }
   };
 
-  const handleLogin = (value) => {
-    console.log(value);
+  const handleLogin = async (value) => {
+    const response = await login(value);
+    if (response.data.mensaje === "Sesión iniciada con éxito") {
+      setUser(response.data.user);
+    } else {
+      console.log(response);
+    }
   };
   return (
     <div className="bg-primary-dark text-white p-2">
