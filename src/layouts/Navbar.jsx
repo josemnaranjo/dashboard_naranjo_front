@@ -7,6 +7,7 @@ import { logout } from "../api/user.services";
 
 const Navbar = () => {
   const { user, setUser } = useUser();
+  console.log(user);
 
   const logoutUser = async () => {
     const { success } = await logout();

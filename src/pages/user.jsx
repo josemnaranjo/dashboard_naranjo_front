@@ -1,15 +1,23 @@
 import Userform from "../components/Userform";
 import { register } from "../api/user.services";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/userContext";
 
 const User = () => {
-    const navigate = useNavigate();
+  const { setUser } = useUser();
+  const navigate = useNavigate();
+
   const registerUser = async (values) => {
-    await register(values);
+    const response = await register(values);
+    if (response.data.mensaje === "") {
+      setUser(response.data.newUser);
+      navigate("/");
+    } else {
+      console.log(response.data);
+    }
   };
   const handleSubmit = (value) => {
     registerUser(value);
-    navigate("/");
   };
 
   return (
