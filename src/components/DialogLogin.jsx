@@ -10,7 +10,7 @@ const DialogLogin = () => {
     padding: "15px",
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (values) => {console.log(values)};
   return (
     <div>
       <Dialog.Root>
