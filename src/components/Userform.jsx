@@ -47,7 +47,7 @@ const Userform = ({ handleSubmit }) => {
         {({ errors, touched }) => (
           <Form className="bg-slate-400 text-white container mx-auto w-96 p-8 rounded-md grid grid-rows-7 gap-3">
             <h1 className="text-xl font-bold">Formulario de registro</h1>
-            
+
             <div className="flex flex-col">
               <label htmlFor="name">nombre</label>
               <Field
@@ -56,7 +56,9 @@ const Userform = ({ handleSubmit }) => {
                 name="name"
                 className="w-38 rounded-lg px-2 text-black"
               />
-              {errors.name && touched.name ? <p className="text-label mt-2 text-red-500">{errors.name}</p>: null}
+              {errors.name && touched.name ? (
+                <p className="text-label mt-2 text-red-500">{errors.name}</p>
+              ) : null}
             </div>
 
             <div className="flex flex-col">
@@ -67,6 +69,11 @@ const Userform = ({ handleSubmit }) => {
                 name="lastName"
                 className="w-38 rounded-lg px-2 text-black"
               />
+              {errors.lastName && touched.lastName ? (
+                <p className="text-label mt-2 text-red-500">
+                  {errors.lastName}
+                </p>
+              ) : null}
             </div>
 
             <div className="flex flex-col">
@@ -77,6 +84,9 @@ const Userform = ({ handleSubmit }) => {
                 name="email"
                 className="w-38 rounded-lg px-2 text-black"
               />
+              {errors.email && touched.email ? (
+                <p className="text-label mt-2 text-red-500">{errors.email}</p>
+              ) : null}
             </div>
 
             <div className="flex flex-col">
@@ -87,6 +97,11 @@ const Userform = ({ handleSubmit }) => {
                 name="password"
                 className="w-38 rounded-lg px-2 text-black"
               />
+              {errors.password && touched.password ? (
+                <p className="text-label mt-2 text-red-500">
+                  {errors.password}
+                </p>
+              ) : null}
             </div>
 
             <div className="flex flex-col">
@@ -97,9 +112,16 @@ const Userform = ({ handleSubmit }) => {
                 name="confirmPassword"
                 className="w-38 rounded-lg px-2 text-black"
               />
+              {errors.confirmPassword && touched.confirmPassword ? (
+                <p className="text-label mt-2 text-red-500">
+                  {errors.confirmPassword}
+                </p>
+              ) : null}
             </div>
 
-            <Button variant="solid">crear</Button>
+            <Button type="submit" variant="solid">
+              crear
+            </Button>
           </Form>
         )}
       </Formik>
