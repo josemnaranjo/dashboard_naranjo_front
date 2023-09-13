@@ -11,7 +11,7 @@ import Logoempresa from "../assets/images/LogoEmpresa.png";
 
 const Sidebar = () => {
   return (
-    <div className="bg-secondary-dark text-white text-base h-screen drop-shadow-sidebar flex flex-col gap-8">
+    <div className="bg-secondary-dark text-white text-base h-screen drop-shadow-sidebar flex flex-col gap-5 w-32">
       <div className="bg-primary-dark rounded-br-lg p-3 drop-shadow-lg">
         <Link to="/">
           <img
@@ -23,8 +23,8 @@ const Sidebar = () => {
       </div>
 
       <div className="grid grid-rows-4 gap-1">
-        <Link to="/tyv-general" className=" text-center font-bold">
-          <h1 className="px-2 text-lg hover:underline hover:underline-offset-2">
+        <Link to="/tyv-general" className="text-center font-bold">
+          <h1 className="text-lg hover:underline hover:underline-offset-2">
             TRABAJADORES Y VEHICULOS
           </h1>
         </Link>
