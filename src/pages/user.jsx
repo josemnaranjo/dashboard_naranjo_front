@@ -3,14 +3,13 @@ import { register } from "../api/user.services";
 import { useNavigate } from "react-router-dom";
 
 const User = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
   const registerUser = async (values) => {
-    // const response = await register(values);
-    console.log(values);
+    await register(values);
   };
   const handleSubmit = (value) => {
     registerUser(value);
-    // navigate("/");
+    navigate("/");
   };
 
   return (
