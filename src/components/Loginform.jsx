@@ -22,7 +22,7 @@ const Loginform = ({ handleSubmit }) => {
           resetForm();
         }}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, resetForm }) => (
           <Form className=" text-white p-2 rounded-md">
             <h1 className="text-xl text-center">iniciar sesion</h1>
 
@@ -57,7 +57,7 @@ const Loginform = ({ handleSubmit }) => {
               <button className="bg-primary-dark hover:drop-shadow-lg hover:bg-primary-middle p-1 px-3 rounded">
                 iniciar
               </button>
-              <button className="bg-secondary-dark hover:drop-shadow-lg hover:bg-secondary-light p-1 rounded">
+              <button className="bg-secondary-dark hover:drop-shadow-lg hover:bg-secondary-light p-1 rounded" onClick={()=> resetForm()}>
                 cancelar
               </button>
             </div>

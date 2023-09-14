@@ -13,6 +13,7 @@ const Navbar = () => {
     if (success) setUser(null);
     else window.alert("Error. No hemos podido desloguear tu usuario");
   };
+  console.log(user)
 
   const renderInfo = () => {
     if (user) {
