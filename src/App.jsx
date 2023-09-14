@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "/src/pages/home";
 import AsistEntrada from "/src/pages/asistEntrada";
 import AsistInformeGeneral from "/src/pages/asistInformeGeneral";
