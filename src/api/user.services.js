@@ -19,3 +19,6 @@ export const logout = async () => {
 
 export const login = async (user) =>
   await axios.post("http://localhost:8000/login", user);
+
+export const getUser = async (email) =>
+  await axios.post("http://localhost:8000/get-user", email);

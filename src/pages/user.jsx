@@ -1,5 +1,5 @@
 import Userform from "../components/Userform";
-import { register } from "../api/user.services";
+import { register, getUser } from "../api/user.services";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/userContext";
 
@@ -10,7 +10,9 @@ const User = () => {
   const registerUser = async (values) => {
     const response = await register(values);
     if (response.data.mensaje === "") {
-      setUser(response.data.newUser);
+      const userEmail = { email: response.data.newUser.email };
+      const userData = await getUser(userEmail);
+      setUser(userData.data);
       navigate("/");
     } else {
       console.log(response.data);

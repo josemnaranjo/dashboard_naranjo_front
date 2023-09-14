@@ -13,13 +13,13 @@ const Navbar = () => {
     if (success) setUser(null);
     else window.alert("Error. No hemos podido desloguear tu usuario");
   };
-  console.log(user)
+
 
   const renderInfo = () => {
     if (user) {
       return (
         <div className="flex justify-end gap-3">
-          <p className="text-base pt-2">¡Bienvenido, {user[0].name}!</p>
+          <p className="text-base pt-2">¡Bienvenido, {user[0]?.name}!</p>
           <Link
             to="/user"
             className="flex items-center gap-2 hover:drop-shadow-lg"

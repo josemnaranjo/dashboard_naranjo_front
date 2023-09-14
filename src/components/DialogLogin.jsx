@@ -1,7 +1,7 @@
 import { Button, Dialog } from "@radix-ui/themes";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import Loginform from "../components/Loginform";
-import { login } from "../api/user.services.js";
+import { login, getUser } from "../api/user.services.js";
 import { useUser } from "../context/userContext";
 
 const DialogLogin = () => {
@@ -15,8 +15,9 @@ const DialogLogin = () => {
   };
   const loginUser = async (values) => {
     const response = await login(values);
+    const userInfo = await getUser(response.data.email);
     if (response.data.mensaje === "Sesión iniciada con éxito") {
-      setUser(response.data.user);
+      setUser(userInfo.data);
     } else {
       console.log(response.data);
     }
