@@ -15,9 +15,11 @@ const DialogLogin = () => {
   };
   const loginUser = async (values) => {
     const response = await login(values);
-    const userInfo = await getUser(response.data.email);
+
     if (response.data.mensaje === "Sesión iniciada con éxito") {
-      setUser(userInfo.data);
+      const userEmail = { email: response.data.user[0].email };
+      const userData = await getUser(userEmail);
+      setUser(userData.data);
     } else {
       console.log(response.data);
     }
