@@ -24,6 +24,7 @@ const Loginform = ({ handleSubmit }) => {
       >
         {({ errors, touched }) => (
           <Form className=" text-white p-2 rounded-md">
+            <h1 className="text-xl text-center">iniciar sesion</h1>
 
             <div className="flex flex-col">
               <label htmlFor="email">email</label>
@@ -53,8 +54,12 @@ const Loginform = ({ handleSubmit }) => {
               ) : null}
             </div>
             <div className="flex justify-around items-center mt-5">
-              <button className="bg-primary-dark p-1 px-3 rounded">crear</button>
-              <button className="bg-secondary-dark p-1 rounded">cancelar</button>
+              <button className="bg-primary-dark hover:drop-shadow-lg hover:bg-primary-middle p-1 px-3 rounded">
+                iniciar
+              </button>
+              <button className="bg-secondary-dark hover:drop-shadow-lg hover:bg-secondary-light p-1 rounded">
+                cancelar
+              </button>
             </div>
           </Form>
         )}

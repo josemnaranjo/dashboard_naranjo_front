@@ -1,16 +1,30 @@
-import { Button, Dialog, Flex } from "@radix-ui/themes";
+import { Button, Dialog } from "@radix-ui/themes";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import Loginform from "../components/Loginform";
+import { login } from "../api/user.services.js";
+import { useUser } from "../context/userContext";
 
 const DialogLogin = () => {
+  const { setUser } = useUser();
+
   const cardStyle = {
     backgroundColor: "rgba(55, 75, 229, 0.97)",
     color: "white",
     width: "fit-content",
     padding: "15px",
   };
+  const loginUser = async (values) => {
+    const response = await login(values);
+    if (response.data.mensaje === "Sesión iniciada con éxito") {
+      setUser(response.data.user);
+    } else {
+      console.log(response.data);
+    }
+  };
 
-  const handleSubmit = (values) => {console.log(values)};
+  const handleSubmit = (values) => {
+    loginUser(values);
+  };
   return (
     <div>
       <Dialog.Root>

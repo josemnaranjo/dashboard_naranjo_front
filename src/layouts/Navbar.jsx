@@ -3,7 +3,7 @@ import { Button } from "@radix-ui/themes";
 import { BsPersonAdd, BsBoxArrowInLeft } from "react-icons/bs";
 import DialogLogin from "../components/DialogLogin";
 import { useUser } from "../context/userContext";
-import { logout, login } from "../api/user.services";
+import { logout } from "../api/user.services";
 
 const Navbar = () => {
   const { user, setUser } = useUser();
@@ -18,7 +18,7 @@ const Navbar = () => {
     if (user) {
       return (
         <div className="flex justify-end gap-3">
-          <p className="text-base pt-2">¡Bienvenido, {user.name}!</p>
+          <p className="text-base pt-2">¡Bienvenido, {user[0].name}!</p>
           <Link
             to="/user"
             className="flex items-center gap-2 hover:drop-shadow-lg"
@@ -42,7 +42,7 @@ const Navbar = () => {
             <BsPersonAdd />
             <p className="text-base">nuevo usuario</p>
           </Link>
-          <DialogLogin/>
+          <DialogLogin />
         </div>
       );
     }
