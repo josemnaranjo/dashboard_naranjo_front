@@ -21,7 +21,8 @@ const DialogLogin = () => {
       const userData = await getUser(userEmail);
       setUser(userData.data);
     } else {
-      console.log(response.data);
+      const mensaje = response.data.errores.error.mensaje;
+      alert(mensaje);
     }
   };
 
