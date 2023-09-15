@@ -57,7 +57,11 @@ const Loginform = ({ handleSubmit }) => {
               <button className="bg-primary-dark hover:drop-shadow-lg hover:bg-primary-middle p-1 px-3 rounded">
                 iniciar
               </button>
-              <button className="bg-secondary-dark hover:drop-shadow-lg hover:bg-secondary-light p-1 rounded" onClick={()=> resetForm()}>
+              <button
+                className="bg-secondary-dark hover:drop-shadow-lg hover:bg-secondary-light p-1 rounded"
+                type="button"
+                onClick={() => resetForm()}
+              >
                 cancelar
               </button>
             </div>
