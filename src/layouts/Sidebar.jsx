@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
   BsPlusCircle,
-  BsTruck,
   BsCalendarWeek,
   BsArrowRight,
   BsArrowLeft,
@@ -44,7 +43,6 @@ const Sidebar = () => {
           <BsCalendarWeek className="h-4 w-5" />
           <h1 className="ml-2">licencias médicas</h1>
         </Link>
-
       </div>
 
       <div className="grid grid-rows-4 gap-1">

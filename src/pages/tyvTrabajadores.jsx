@@ -1,7 +1,11 @@
+import WorkersList from "../components/WorkersList";
+import NewWorkerForm from "../components/NewWorkerForm";
+
 const TyvTrabajadores = () => {
   return (
     <div>
-      <h1>Trabajadores y vehículos - trabajadores</h1>
+      <WorkersList />
+      <NewWorkerForm />
     </div>
   );
 };
