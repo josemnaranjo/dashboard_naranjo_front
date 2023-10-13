@@ -22,7 +22,7 @@ const Sidebar = () => {
         </Link>
       </div>
 
-      <div className="grid grid-rows-4 gap-1">
+      <div className="grid grid-rows-3 gap-1">
         <Link to="/tyv-general" className="text-center font-bold">
           <h1 className="text-lg hover:underline hover:underline-offset-2">
             TRABAJADORES Y VEHICULOS
@@ -45,13 +45,6 @@ const Sidebar = () => {
           <h1 className="ml-2">licencias médicas</h1>
         </Link>
 
-        <Link
-          to="/tyv-vehiculos"
-          className="flex items-center pl-6 hover:text-primary-dark hover:drop-shadow-lg "
-        >
-          <BsTruck className="h-4 w-5" />
-          <h1 className="ml-2">agregar vehículos</h1>
-        </Link>
       </div>
 
       <div className="grid grid-rows-4 gap-1">

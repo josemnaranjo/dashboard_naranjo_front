@@ -7,7 +7,6 @@ import AsistSalida from "../src/pages/asistSalida";
 import TyVLicencias from "../src/pages/tyvLicencias";
 import TyVPrincipal from "../src/pages/tyvPrincipal";
 import TyVTrabajadores from "../src/pages/tyvTrabajadores";
-import TyVVehiculos from "../src/pages/tyvVehiculos";
 import User from "../src/pages/user";
 import Navbar from "../src/layouts/Navbar";
 import Sidebar from "./layouts/Sidebar";
@@ -47,7 +46,6 @@ function App() {
                 <Route path="/tyv-licencias" element={<TyVLicencias />} />
                 <Route path="/tyv-general" element={<TyVPrincipal />} />
                 <Route path="/tyv-trabajadores" element={<TyVTrabajadores />} />
-                <Route path="/tyv-vehiculos" element={<TyVVehiculos />} />
               </Route>
             </Routes>
           </Frame>
