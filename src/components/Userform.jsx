@@ -45,7 +45,7 @@ const Userform = ({ handleSubmit }) => {
         }}
       >
         {({ errors, touched }) => (
-          <Form className="bg-slate-400 text-white container mx-auto w-96 p-8 rounded-md grid grid-rows-7 gap-3">
+          <Form className="bg-slate-300 text-white container mx-auto w-96 p-8 rounded-md grid grid-rows-7 gap-3">
             <h1 className="text-xl font-bold">Formulario de registro</h1>
 
             <div className="flex flex-col">
