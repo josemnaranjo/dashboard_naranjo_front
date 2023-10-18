@@ -28,7 +28,7 @@ const NewWorkerForm = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form className="bg-gray-300 text-white container mx-auto w-96 py-28 h-full rounded-xl flex flex-col justify-around items-center">
+          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center">
             <h1 className="text-xl">
               Nuevo trabajador
             </h1>
