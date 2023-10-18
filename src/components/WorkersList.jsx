@@ -1,7 +1,7 @@
 import { BsSearch } from "react-icons/bs";
 const WorkersList = () => {
   return (
-    <div className="bg-gray-300 rounded-xl h-full">
+    <div className="bg-gray-300 rounded-xl flex flex-col py-20 justify-around">
       <div className="pt-7 flex justify-center items-center gap-2">
         <input
           type="text"
@@ -12,7 +12,7 @@ const WorkersList = () => {
           <BsSearch className="text-white w-3 h-3" />
         </button>
       </div>
-      <ul className="px-5 pb-7 pt-7  text-white">
+      <ul className="text-white px-5">
         <li className="grid grid-cols-3 gap-4 mt-3">
           <h2 className="py-1">Trabajador Uno</h2>
           <button className="bg-primary-middle text-white rounded-xl px-3 py-1 hover:bg-primary-dark hover:drop-shadow-md">
