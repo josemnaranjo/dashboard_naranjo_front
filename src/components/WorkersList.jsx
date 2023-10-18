@@ -1,7 +1,7 @@
 import { BsSearch } from "react-icons/bs";
 const WorkersList = () => {
   return (
-    <div className="bg-gray-300 rounded-xl h-96">
+    <div className="bg-gray-300 rounded-xl h-full">
       <div className="pt-7 flex justify-center items-center gap-2">
         <input
           type="text"

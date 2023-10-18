@@ -28,9 +28,11 @@ const NewWorkerForm = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form className="bg-gray-300 text-white container mx-auto w-96 p-8 h-96 rounded-xl grid grid-rows-5 justify-items-center gap-3">
-            <h1 className="text-xl">Nuevo trabajador</h1>
-            <div className="flex flex-col">
+          <Form className="bg-gray-300 text-white container mx-auto w-96 py-28 h-full rounded-xl flex flex-col justify-around items-center">
+            <h1 className="text-xl">
+              Nuevo trabajador
+            </h1>
+            <div className="flex flex-col h-fit">
               <label htmlFor="name" className="text-white">
                 Nombre
               </label>
@@ -44,7 +46,7 @@ const NewWorkerForm = () => {
                 <p className="text-label  text-red-500">{errors.name}</p>
               ) : null}
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-fit">
               <label htmlFor="lastName">Apellido</label>
               <Field
                 id="lastName"
@@ -53,12 +55,10 @@ const NewWorkerForm = () => {
                 className="w-64 rounded-lg px-2 text-black"
               />
               {errors.lastName && touched.lastName ? (
-                <p className="text-label text-red-500">
-                  {errors.lastName}
-                </p>
+                <p className="text-label text-red-500">{errors.lastName}</p>
               ) : null}
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-fit">
               <label htmlFor="rut">Rut</label>
               <Field
                 id="rut"
@@ -72,7 +72,7 @@ const NewWorkerForm = () => {
             </div>
             <button
               type="submit"
-              className="bg-secondary-middle text-white rounded-xl h-8 w-40 mt-2 hover:bg-secondary-dark hover:drop-shadow-md"
+              className="bg-secondary-middle text-white rounded-xl h-8 w-40 hover:bg-secondary-dark hover:drop-shadow-md"
             >
               crear trabajador
             </button>
