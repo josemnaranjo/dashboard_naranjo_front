@@ -5,7 +5,7 @@ const WorkersList = () => {
       <div className="pt-7 flex justify-center items-center gap-2">
         <input
           type="text"
-          className="rounded-lg px-3"
+          className="rounded-lg px-3 w-80 h-7"
           placeholder="buscar trabajador"
         />
         <button className="rounded-full border-2 p-1.5 hover:drop-shadow-xl">

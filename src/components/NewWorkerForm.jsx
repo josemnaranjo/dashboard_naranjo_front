@@ -40,7 +40,7 @@ const NewWorkerForm = () => {
                 id="name"
                 type="text"
                 name="name"
-                className="w-64 rounded-lg px-2 text-black"
+                className="w-64 h-7 rounded-lg px-2 text-black"
               />
               {errors.name && touched.name ? (
                 <p className="text-label  text-red-500">{errors.name}</p>
@@ -52,7 +52,7 @@ const NewWorkerForm = () => {
                 id="lastName"
                 type="text"
                 name="lastName"
-                className="w-64 rounded-lg px-2 text-black"
+                className="w-64 h-7 rounded-lg px-2 text-black"
               />
               {errors.lastName && touched.lastName ? (
                 <p className="text-label text-red-500">{errors.lastName}</p>
@@ -64,7 +64,7 @@ const NewWorkerForm = () => {
                 id="rut"
                 type="text"
                 name="rut"
-                className="w-64 rounded-lg px-2 text-black"
+                className="w-64 h-7 rounded-lg px-2 text-black"
               />
               {errors.rut && touched.rut ? (
                 <p className="text-label text-red-500">{errors.rut}</p>
