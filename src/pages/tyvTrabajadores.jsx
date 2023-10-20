@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useStore } from "../store/workerStore.js";
+import  useStore  from "../store/workerStore.js";
 import WorkersList from "../components/WorkersList";
 import NewWorkerForm from "../components/NewWorkerForm";
 

@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+        width:{
+            workerList: '30rem'
+        },
       colors: {
         "primary-light": "rgba(252, 187, 20, 0.58)",
         "primary-middle": "rgba(255, 191, 26, 0.85)",

@@ -4,12 +4,16 @@ import { getAllWorkers } from "../api/workers.services";
 const useStore = create((set) => ({
   workers: [],
   getWorkersAsync: async () => {
-    const response = await getAllWorkers();
-    set({
-      workers: response.data,
-    });
+    try{
+        const response = await getAllWorkers();
+        set({
+          workers: response.data,
+        });
+    } catch(err){
+        alert("Ha ocurrido un error al intentar recuperar la información")
+    }
   },
 
 }));
 
-export { useStore };
+export default useStore ;
