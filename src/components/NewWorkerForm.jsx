@@ -20,6 +20,7 @@ const NewWorkerForm = () => {
           name: "",
           lastName: "",
           rut: "",
+          exWorker: false,
         }}
         validationSchema={valSchema}
         onSubmit={(values, { resetForm }) => {
@@ -70,6 +71,13 @@ const NewWorkerForm = () => {
                 <p className="text-label text-red-500">{errors.rut}</p>
               ) : null}
             </div>
+            <div>
+                  <label htmlFor="exWorker">
+                    {" "}
+                    El trabajador es exempleado
+                    <Field type="checkbox" name="exWorker" className="ml-2" />
+                  </label>
+                </div>
             <button
               type="submit"
               className="bg-secondary-middle text-white rounded-xl h-8 w-40 hover:bg-secondary-dark hover:drop-shadow-md"
