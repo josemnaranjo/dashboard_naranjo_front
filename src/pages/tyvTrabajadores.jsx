@@ -4,7 +4,7 @@ import WorkersList from "../components/WorkersList";
 import NewWorkerForm from "../components/NewWorkerForm";
 
 const TyvTrabajadores = () => {
-  const { workers, getWorkersAsync } = useStore();
+  const { workers, getWorkersAsync, addWorkerAsync } = useStore();
 
   useEffect(() => {
     getWorkersAsync();
@@ -13,7 +13,7 @@ const TyvTrabajadores = () => {
   return (
     <div className="grid grid-cols-2 h-4/5">
       <WorkersList workersData={workers} />
-      <NewWorkerForm />
+      <NewWorkerForm handleSubmit={addWorkerAsync} />
     </div>
   );
 };

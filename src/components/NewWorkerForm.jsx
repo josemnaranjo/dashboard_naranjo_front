@@ -1,15 +1,12 @@
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
+import { formatRut } from "@fdograph/rut-utilities";
 
-const NewWorkerForm = () => {
+const NewWorkerForm = ({ handleSubmit }) => {
   const valSchema = Yup.object().shape({
     name: Yup.string().required("Campo obligatorio"),
 
     lastName: Yup.string().required("Campo obligatorio"),
-
-    email: Yup.string()
-      .email("Formato de correo incorrecto")
-      .required("Campo obligatorio"),
 
     rut: Yup.string().required("Campo obligatorio"),
   });
@@ -24,15 +21,13 @@ const NewWorkerForm = () => {
         }}
         validationSchema={valSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          handleSubmit(values);
           resetForm();
         }}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, setFieldValue }) => (
           <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center">
-            <h1 className="text-xl">
-              Nuevo trabajador
-            </h1>
+            <h1 className="text-xl">Nuevo trabajador</h1>
             <div className="flex flex-col h-fit">
               <label htmlFor="name" className="text-white">
                 Nombre
@@ -66,18 +61,22 @@ const NewWorkerForm = () => {
                 type="text"
                 name="rut"
                 className="w-64 h-7 rounded-lg px-2 text-black"
+                onBlur={(event) => {
+                  const formattedRut = formatRut(event.target.value);
+                  setFieldValue("rut", formattedRut);
+                }}
               />
               {errors.rut && touched.rut ? (
                 <p className="text-label text-red-500">{errors.rut}</p>
               ) : null}
             </div>
             <div>
-                  <label htmlFor="exWorker">
-                    {" "}
-                    El trabajador es exempleado
-                    <Field type="checkbox" name="exWorker" className="ml-2" />
-                  </label>
-                </div>
+              <label htmlFor="exWorker">
+                {" "}
+                El trabajador es exempleado
+                <Field type="checkbox" name="exWorker" className="ml-2" />
+              </label>
+            </div>
             <button
               type="submit"
               className="bg-secondary-middle text-white rounded-xl h-8 w-40 hover:bg-secondary-dark hover:drop-shadow-md"
