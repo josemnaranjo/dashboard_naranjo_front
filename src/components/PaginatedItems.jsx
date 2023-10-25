@@ -18,14 +18,17 @@ const PaginatedItems = ({ itemsPerPage, workersData }) => {
     <div>
       <ul className="text-white grid grid-rows-5 gap-4 px-5">
         {currentItems?.map((worker) => (
-          <li className="grid grid-cols-3 gap-4 w-workerList" key={worker.id}>
-            <h2 className="py-1">
+          <li className="grid grid-cols-3 gap-7 w-workerList" key={worker.id}>
+            <h2 className="py-1 line-clamp-1" title={worker.lastName}>
               {worker.name} {worker.lastName}
             </h2>
-            <button className="bg-primary-middle text-white rounded-xl px-3 py-1 hover:bg-primary-dark hover:drop-shadow-md" onClick={()=> deleteWorkerAsync(worker.rut)}>
+            <button
+              className="bg-primary-middle text-white rounded-xl  hover:bg-primary-dark hover:drop-shadow-md"
+              onClick={() => deleteWorkerAsync(worker.rut)}
+            >
               borrar
             </button>
-            <button className="bg-secondary-middle text-white rounded-xl px-3 py-1 hover:bg-secondary-dark hover:drop-shadow-md">
+            <button className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md">
               editar
             </button>
           </li>
