@@ -1,7 +1,7 @@
 import { BsSearch } from "react-icons/bs";
 import PaginatedItems from "./PaginatedItems";
 
-const WorkersList = ({ workersData }) => {
+const WorkersList = ({ workersData, setWorkerToUpdate }) => {
   return (
     <div className="bg-gray-300 rounded-xl flex flex-col justify-center gap-10">
       <div className="flex justify-center items-center gap-2">
@@ -14,7 +14,11 @@ const WorkersList = ({ workersData }) => {
           <BsSearch className="text-white w-3 h-3" />
         </button>
       </div>
-      <PaginatedItems workersData={workersData} itemsPerPage={5} />
+      <PaginatedItems
+        workersData={workersData}
+        itemsPerPage={5}
+        setWorkerToUpdate={setWorkerToUpdate}
+      />
     </div>
   );
 };

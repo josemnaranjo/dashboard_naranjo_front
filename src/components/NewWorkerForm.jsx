@@ -2,7 +2,7 @@ import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { formatRut } from "@fdograph/rut-utilities";
 
-const NewWorkerForm = ({ handleSubmit }) => {
+const NewWorkerForm = ({ handleSubmit, workerToUpdate }) => {
   const valSchema = Yup.object().shape({
     name: Yup.string().required("Campo obligatorio"),
 
@@ -10,6 +10,7 @@ const NewWorkerForm = ({ handleSubmit }) => {
 
     rut: Yup.string().required("Campo obligatorio"),
   });
+
   return (
     <div>
       <Formik
@@ -37,6 +38,7 @@ const NewWorkerForm = ({ handleSubmit }) => {
                 type="text"
                 name="name"
                 className="w-64 h-7 rounded-lg px-2 text-black"
+                value={workerToUpdate.name}
               />
               {errors.name && touched.name ? (
                 <p className="text-label  text-red-500">{errors.name}</p>
@@ -49,6 +51,7 @@ const NewWorkerForm = ({ handleSubmit }) => {
                 type="text"
                 name="lastName"
                 className="w-64 h-7 rounded-lg px-2 text-black"
+                value={workerToUpdate.lastName}
               />
               {errors.lastName && touched.lastName ? (
                 <p className="text-label text-red-500">{errors.lastName}</p>
@@ -65,6 +68,7 @@ const NewWorkerForm = ({ handleSubmit }) => {
                   const formattedRut = formatRut(event.target.value);
                   setFieldValue("rut", formattedRut);
                 }}
+                value={workerToUpdate.rut}
               />
               {errors.rut && touched.rut ? (
                 <p className="text-label text-red-500">{errors.rut}</p>

@@ -2,8 +2,9 @@ import { useState } from "react";
 import useStore from "../store/workerStore";
 import ReactPaginate from "react-paginate";
 
-const PaginatedItems = ({ itemsPerPage, workersData }) => {
+const PaginatedItems = ({ itemsPerPage, workersData, setWorkerToUpdate }) => {
   const { deleteWorkerAsync } = useStore();
+
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = workersData.slice(itemOffset, endOffset);
@@ -28,7 +29,10 @@ const PaginatedItems = ({ itemsPerPage, workersData }) => {
             >
               borrar
             </button>
-            <button className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md">
+            <button
+              className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
+              onClick={() => setWorkerToUpdate({ name:worker.name,lastName:worker.lastName,rut:worker.rut})}
+            >
               editar
             </button>
           </li>
