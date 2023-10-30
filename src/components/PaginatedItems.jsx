@@ -31,7 +31,14 @@ const PaginatedItems = ({ itemsPerPage, workersData, setWorkerToUpdate }) => {
             </button>
             <button
               className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
-              onClick={() => setWorkerToUpdate({ name:worker.name,lastName:worker.lastName,rut:worker.rut})}
+              onClick={() =>
+                setWorkerToUpdate({
+                  name: worker.name,
+                  lastName: worker.lastName,
+                  rut: worker.rut,
+                  toUpdate: true,
+                })
+              }
             >
               editar
             </button>

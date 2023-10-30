@@ -3,6 +3,7 @@ import {
   getAllWorkers,
   deleteWorker,
   createWorker,
+  updateWorker,
 } from "../api/workers.services";
 import { devtools } from "zustand/middleware";
 
@@ -44,12 +45,34 @@ const useStore = create(
         const response = await createWorker(worker);
         if (response.data.mensaje === "Trabajador creado exitosamente") {
           const workerData = response.data.newWorker;
-          set((state) => ({ workers: [...state.workers,  workerData ] }));
+          set((state) => ({ workers: [...state.workers, workerData] }));
           alert("Trabajador creado con éxito");
         }
       } catch (err) {
         alert(
           "Error con la base de datos. No se pudo crear el trabajador solicitado"
+        );
+      }
+    },
+    updateWorkerAsync: async (rut, worker) => {
+      try {
+        const response = await updateWorker(rut, worker);
+
+        if (response.data.mensaje === "Datos del trabajador actualizados") {
+          const { name, lastName } = worker;
+          set((state) =>
+            state.workers.map((worker) => {
+              if (worker.rut === rut) {
+                (worker.name = name), (worker.lastName = lastName);
+              } else {
+                worker;
+              }
+            })
+          );
+        }
+      } catch (err) {
+        alert(
+          "Error en la base de datos. No se pudo actualizar los datos del trabajador"
         );
       }
     },
