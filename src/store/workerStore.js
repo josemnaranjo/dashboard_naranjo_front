@@ -54,15 +54,15 @@ const useStore = create(
         );
       }
     },
-    updateWorkerAsync: async (rut, worker) => {
+    updateWorkerAsync: async (worker) => {
       try {
-        const response = await updateWorker(rut, worker);
+        const response = await updateWorker(worker);
 
         if (response.data.mensaje === "Datos del trabajador actualizados") {
-          const { name, lastName } = worker;
+          const { name, lastName, id } = worker;
           set((state) =>
             state.workers.map((worker) => {
-              if (worker.rut === rut) {
+              if (worker.id === id) {
                 (worker.name = name), (worker.lastName = lastName);
               } else {
                 worker;

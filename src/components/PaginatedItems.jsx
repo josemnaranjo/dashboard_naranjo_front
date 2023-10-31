@@ -37,6 +37,7 @@ const PaginatedItems = ({ itemsPerPage, workersData, setWorkerToUpdate }) => {
                   lastName: worker.lastName,
                   rut: worker.rut,
                   toUpdate: true,
+                  id: worker.id,
                 })
               }
             >
