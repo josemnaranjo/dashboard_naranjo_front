@@ -48,16 +48,21 @@ const useStore = create(
           const workerData = response.data.newWorker;
           set((state) => ({ workers: [...state.workers, workerData] }));
           Swal.fire({
-            icon:"success",
-            text:"Trabajador creado con éxito",
-            background:"#374be5",
-            color:"#fff"
-          })
+            icon: "success",
+            text: "Trabajador creado con éxito",
+            background: "#374be5",
+            color: "#fff",
+          });
         }
         if (response.data.mensaje === "Trabajador restaurado exitosamente") {
           const newWorkers = await getAllWorkers();
           set({ workers: newWorkers.data });
-          alert("Trabajador creado con éxito");
+          Swal.fire({
+            icon: "success",
+            text: "Trabajador creado con éxito",
+            background: "#374be5",
+            color: "#fff",
+          });
         }
       } catch (err) {
         alert(

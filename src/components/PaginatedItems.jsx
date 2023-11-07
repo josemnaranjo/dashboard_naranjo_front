@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useStore from "../store/workerStore";
 import ReactPaginate from "react-paginate";
+import Swal from "sweetalert2";
 
 const PaginatedItems = ({ itemsPerPage, workersData, setWorkerToUpdate }) => {
   const { deleteWorkerAsync } = useStore();
@@ -25,7 +26,29 @@ const PaginatedItems = ({ itemsPerPage, workersData, setWorkerToUpdate }) => {
             </h2>
             <button
               className="bg-primary-middle text-white rounded-xl  hover:bg-primary-dark hover:drop-shadow-md"
-              onClick={() => deleteWorkerAsync(worker.rut)}
+              onClick={() =>
+                Swal.fire({
+                  text: "¿Estas seguro de eliminar a este trabajador?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonText: "confirmar",
+                  cancelButtonText: "cancelar",
+                  color: "#fff",
+                  background: "#374be5",
+                  confirmButtonColor: "#E1BF1A",
+                  cancelButtonColor: "#b8b6b6",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    deleteWorkerAsync(worker.rut);
+                    Swal.fire({
+                      color: "#fff",
+                      background: "#374be5",
+                      text: "Trabajador eliminado",
+                      icon: "success",
+                    });
+                  }
+                })
+              }
             >
               borrar
             </button>
