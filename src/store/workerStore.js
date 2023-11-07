@@ -6,6 +6,7 @@ import {
   updateWorker,
 } from "../api/workers.services";
 import { devtools } from "zustand/middleware";
+import Swal from "sweetalert2";
 
 const useStore = create(
   devtools((set) => ({
@@ -46,7 +47,12 @@ const useStore = create(
         if (response.data.mensaje === "Trabajador creado exitosamente") {
           const workerData = response.data.newWorker;
           set((state) => ({ workers: [...state.workers, workerData] }));
-          alert("Trabajador creado con éxito");
+          Swal.fire({
+            icon:"success",
+            text:"Trabajador creado con éxito",
+            background:"#374be5",
+            color:"#fff"
+          })
         }
         if (response.data.mensaje === "Trabajador restaurado exitosamente") {
           const newWorkers = await getAllWorkers();
