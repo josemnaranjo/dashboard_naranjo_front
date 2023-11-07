@@ -48,6 +48,11 @@ const useStore = create(
           set((state) => ({ workers: [...state.workers, workerData] }));
           alert("Trabajador creado con éxito");
         }
+        if (response.data.mensaje === "Trabajador restaurado exitosamente") {
+          const newWorkers = await getAllWorkers();
+          set({ workers: newWorkers.data });
+          alert("Trabajador creado con éxito");
+        }
       } catch (err) {
         alert(
           "Error con la base de datos. No se pudo crear el trabajador solicitado"
