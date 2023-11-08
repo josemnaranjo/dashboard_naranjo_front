@@ -11,15 +11,18 @@ const TyvTrabajadores = () => {
     updateWorkerAsync,
     searchWorker,
   } = useStore();
+
   const [workerToUpdate, setWorkerToUpdate] = useState({
     name: "",
     lastName: "",
     rut: "",
   });
 
+  const [reset, setReset] = useState(false); //reseteo para cuando se termine de buscar a un trabajador
+
   useEffect(() => {
     getWorkersAsync();
-  }, []);
+  }, [reset]);
 
   return (
     <div className="grid grid-cols-2 h-4/5">
@@ -27,6 +30,8 @@ const TyvTrabajadores = () => {
         workersData={workers}
         setWorkerToUpdate={setWorkerToUpdate}
         setSearchWorker={searchWorker}
+        reset={reset}
+        setReset={setReset}
       />
       <NewWorkerForm
         handleSubmitCreate={addWorkerAsync}
