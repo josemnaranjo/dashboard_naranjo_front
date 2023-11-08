@@ -4,8 +4,13 @@ import WorkersList from "../components/WorkersList";
 import NewWorkerForm from "../components/NewWorkerForm";
 
 const TyvTrabajadores = () => {
-  const { workers, getWorkersAsync, addWorkerAsync, updateWorkerAsync } =
-    useStore();
+  const {
+    workers,
+    getWorkersAsync,
+    addWorkerAsync,
+    updateWorkerAsync,
+    searchWorker,
+  } = useStore();
   const [workerToUpdate, setWorkerToUpdate] = useState({
     name: "",
     lastName: "",
@@ -21,6 +26,7 @@ const TyvTrabajadores = () => {
       <WorkersList
         workersData={workers}
         setWorkerToUpdate={setWorkerToUpdate}
+        setSearchWorker={searchWorker}
       />
       <NewWorkerForm
         handleSubmitCreate={addWorkerAsync}

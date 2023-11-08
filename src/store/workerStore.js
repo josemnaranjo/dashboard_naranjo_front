@@ -92,6 +92,9 @@ const useStore = create(
         );
       }
     },
+    searchWorker: (data)=>{
+        set((state)=>({...state,workers: state.workers.filter((worker)=> worker.lastName === data)}))
+    }
   }))
 );
 
