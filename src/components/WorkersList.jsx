@@ -13,6 +13,16 @@ const WorkersList = ({
 }) => {
   const [worker, setWorker] = useState();
   const [showReset, setShowReset] = useState(false);
+  
+  const checkUndefinedOrEmpty = (data) => {
+    if (data === undefined) {
+      return false;
+    } else if (data.trim().length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
   return (
     <div className="bg-gray-300 rounded-xl flex flex-col justify-center gap-10">
       <div className="flex justify-center items-center gap-2">
@@ -27,8 +37,11 @@ const WorkersList = ({
         <button
           className="rounded-full border-2 p-1.5 hover:drop-shadow-xl"
           onClick={() => {
-            setSearchWorker(worker);
-            setShowReset(true);
+            console.log(checkUndefinedOrEmpty(worker));
+            if (checkUndefinedOrEmpty(worker)) {
+              setSearchWorker(worker);
+              setShowReset(true);
+            }
           }}
         >
           <BsSearch className="text-white w-3 h-3" />
