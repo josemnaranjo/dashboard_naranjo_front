@@ -92,9 +92,23 @@ const useStore = create(
         );
       }
     },
-    searchWorker: (data)=>{
-        set((state)=>({...state,workers: state.workers.filter((worker)=> worker.lastName === data)}))
-    }
+    searchWorker: (data) => {
+      set((state) => {
+        const filteredWorkers = state.workers.filter(
+          (worker) => worker.lastName === data
+        );
+        if (filteredWorkers.length !== 0) {
+          return { ...state, workers: filteredWorkers };
+        } else {
+          return {
+            ...state,
+            workers: [
+              { mensaje: "no se encontraron trabajadores", mensajeid: 0 },
+            ],
+          };
+        }
+      });
+    },
   }))
 );
 

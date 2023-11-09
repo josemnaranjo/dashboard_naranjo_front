@@ -19,55 +19,62 @@ const PaginatedItems = ({ itemsPerPage, workersData, setWorkerToUpdate }) => {
   return (
     <div>
       <ul className="text-white grid grid-rows-5 gap-4 px-5">
-        {currentItems?.map((worker) => (
-          <li className="grid grid-cols-3 gap-7 w-workerList" key={worker.id}>
-            <h2 className="py-1 line-clamp-1" title={worker.lastName}>
-              {worker.name} {worker.lastName}
-            </h2>
-            <button
-              className="bg-primary-middle text-white rounded-xl  hover:bg-primary-dark hover:drop-shadow-md"
-              onClick={() =>
-                Swal.fire({
-                  text: "¿Estas seguro de eliminar a este trabajador?",
-                  icon: "warning",
-                  showCancelButton: true,
-                  confirmButtonText: "confirmar",
-                  cancelButtonText: "cancelar",
-                  color: "#fff",
-                  background: "#374be5",
-                  confirmButtonColor: "#E1BF1A",
-                  cancelButtonColor: "#b8b6b6",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    deleteWorkerAsync(worker.rut);
-                    Swal.fire({
-                      color: "#fff",
-                      background: "#374be5",
-                      text: "Trabajador eliminado",
-                      icon: "success",
-                    });
-                  }
-                })
-              }
-            >
-              borrar
-            </button>
-            <button
-              className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
-              onClick={() =>
-                setWorkerToUpdate({
-                  name: worker.name,
-                  lastName: worker.lastName,
-                  rut: worker.rut,
-                  toUpdate: true,
-                  id: worker.id,
-                })
-              }
-            >
-              editar
-            </button>
-          </li>
-        ))}
+        {currentItems?.map((worker) =>
+          worker.mensaje ? (
+            <li key={worker.mensaje.id}>
+              <h1 className="py-1">El trabajador no se encuentra en la base de datos</h1>
+            </li>
+          ) : (
+            
+            <li className="grid grid-cols-3 gap-7 w-workerList" key={worker.id}>
+              <h2 className="py-1 line-clamp-1" title={worker.lastName}>
+                {worker.name} {worker.lastName}
+              </h2>
+              <button
+                className="bg-primary-middle text-white rounded-xl  hover:bg-primary-dark hover:drop-shadow-md"
+                onClick={() =>
+                  Swal.fire({
+                    text: "¿Estas seguro de eliminar a este trabajador?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "confirmar",
+                    cancelButtonText: "cancelar",
+                    color: "#fff",
+                    background: "#374be5",
+                    confirmButtonColor: "#E1BF1A",
+                    cancelButtonColor: "#b8b6b6",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      deleteWorkerAsync(worker.rut);
+                      Swal.fire({
+                        color: "#fff",
+                        background: "#374be5",
+                        text: "Trabajador eliminado",
+                        icon: "success",
+                      });
+                    }
+                  })
+                }
+              >
+                borrar
+              </button>
+              <button
+                className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
+                onClick={() =>
+                  setWorkerToUpdate({
+                    name: worker.name,
+                    lastName: worker.lastName,
+                    rut: worker.rut,
+                    toUpdate: true,
+                    id: worker.id,
+                  })
+                }
+              >
+                editar
+              </button>
+            </li>
+          )
+        )}
       </ul>
       <ReactPaginate
         breakLabel="..."

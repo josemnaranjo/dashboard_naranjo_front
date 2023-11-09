@@ -13,7 +13,7 @@ const WorkersList = ({
 }) => {
   const [worker, setWorker] = useState();
   const [showReset, setShowReset] = useState(false);
-  
+
   const checkUndefinedOrEmpty = (data) => {
     if (data === undefined) {
       return false;
@@ -37,7 +37,6 @@ const WorkersList = ({
         <button
           className="rounded-full border-2 p-1.5 hover:drop-shadow-xl"
           onClick={() => {
-            console.log(checkUndefinedOrEmpty(worker));
             if (checkUndefinedOrEmpty(worker)) {
               setSearchWorker(worker);
               setShowReset(true);
