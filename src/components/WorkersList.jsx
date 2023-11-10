@@ -2,7 +2,7 @@ import { BsSearch } from "react-icons/bs";
 import { BsArrowRepeat } from "react-icons/bs";
 
 import PaginatedItems from "./PaginatedItems";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const WorkersList = ({
   workersData,
@@ -11,8 +11,9 @@ const WorkersList = ({
   reset,
   setReset,
 }) => {
-  const [worker, setWorker] = useState();
+  const [worker, setWorker] = useState("");
   const [showReset, setShowReset] = useState(false);
+  const inputRef = useRef();
 
   const checkUndefinedOrEmpty = (data) => {
     if (data === undefined) {
@@ -28,6 +29,7 @@ const WorkersList = ({
       <div className="flex justify-center items-center gap-2">
         <input
           type="text"
+          ref={inputRef}
           className="rounded-lg px-3 w-80 h-7"
           placeholder="buscar por apellido"
           onChange={(e) => {
@@ -51,6 +53,8 @@ const WorkersList = ({
             onClick={() => {
               setReset(!reset);
               setShowReset(false);
+              setWorker("");
+              inputRef.current.value = "";
             }}
           >
             <BsArrowRepeat className="text-white w-3 h-3" />
