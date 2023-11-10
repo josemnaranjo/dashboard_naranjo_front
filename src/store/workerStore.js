@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 const useStore = create(
   devtools((set) => ({
     workers: [],
+    mensaje: "",
     getWorkersAsync: async () => {
       try {
         const response = await getAllWorkers();
@@ -100,12 +101,13 @@ const useStore = create(
         if (filteredWorkers.length !== 0) {
           return { ...state, workers: filteredWorkers };
         } else {
-          return {
-            ...state,
-            workers: [
-              { mensaje: "no se encontraron trabajadores", mensajeid: 0 },
-            ],
-          };
+          Swal.fire({
+            icon: "warning",
+            text: "El trabajador no existe en la base de datos",
+            background: "#374be5",
+            color: "#fff",
+          });
+          return { ...state };
         }
       });
     },
