@@ -86,6 +86,12 @@ const useStore = create(
               }
             })
           );
+          Swal.fire({
+            icon: "success",
+            text: "Trabajador editado con éxito",
+            background: "#374be5",
+            color: "#fff",
+          });
         }
       } catch (err) {
         alert(

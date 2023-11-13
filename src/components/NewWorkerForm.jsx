@@ -94,6 +94,7 @@ const NewWorkerForm = ({
     );
   };
 
+
   const updateWorkerForm = () => {
     return (
       <Formik
@@ -112,7 +113,7 @@ const NewWorkerForm = ({
       >
         {({ errors, touched, setFieldValue }) => (
           <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center">
-            <h1 className="text-xl">Nuevo trabajador</h1>
+            <h1 className="text-xl">Editar trabajador</h1>
             <div className="flex flex-col h-fit">
               <label htmlFor="name" className="text-white">
                 Nombre
@@ -155,12 +156,17 @@ const NewWorkerForm = ({
                 <p className="text-label text-red-500">{errors.rut}</p>
               ) : null}
             </div>
-            <button
-              type="submit"
-              className="bg-secondary-middle text-white rounded-xl h-8 w-40 hover:bg-secondary-dark hover:drop-shadow-md"
-            >
-              actualizar datos
-            </button>
+            <div className="flex flex-col gap-3">
+              <button
+                type="submit"
+                className="bg-secondary-middle text-white rounded-xl h-8 w-40 hover:bg-secondary-dark hover:drop-shadow-md"
+              >
+                actualizar datos
+              </button>
+              <button type="button">
+                volver
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
