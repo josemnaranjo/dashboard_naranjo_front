@@ -36,7 +36,7 @@ const TyvTrabajadores = () => {
       <NewWorkerForm
         handleSubmitCreate={addWorkerAsync}
         workerToUpdate={workerToUpdate}
-        handleSubmitUpdate={updateWorkerAsync}
+        updateWorkerAsync={updateWorkerAsync}
       />
     </div>
   );

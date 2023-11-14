@@ -53,7 +53,7 @@ const PaginatedItems = ({ itemsPerPage, workersData, setWorkerToUpdate }) => {
               borrar
             </button>
             <button
-              className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
+              className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md focus:ring focus:ring-secondary-light"
               onClick={() =>
                 setWorkerToUpdate({
                   name: worker.name,

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const NewWorkerForm = ({
   handleSubmitCreate,
-  handleSubmitUpdate,
+  updateWorkerAsync,
   workerToUpdate,
 }) => {
   const [form, setForm] = useState();
@@ -34,7 +34,7 @@ const NewWorkerForm = ({
         }}
       >
         {({ errors, touched, setFieldValue }) => (
-          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center">
+          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-gray-400">
             <h1 className="text-xl">Nuevo trabajador</h1>
             <div className="flex flex-col h-fit">
               <label htmlFor="name" className="text-white">
@@ -99,16 +99,22 @@ const NewWorkerForm = ({
 
   //Todo lo que está abajo corresponde al formulario para actualizar los datos del trabajador
 
-  const handleFormRender = () => {
+  const handleResetFormToCreate = () => {
+    setForm(false);
+  };
+
+  const handleUpdateSubmit = (values) => {
+    updateWorkerAsync(values);
+    handleResetFormToCreate();
+  };
+
+   // transformar esta funcion en un hook
+   const handleFormRender = () => {
     if (workerToUpdate.toUpdate) {
       setForm(true);
     } else {
       setForm(false);
     }
-  };
-
-  const handleResetFormToCreate = () => {
-    setForm(false);
   };
 
   //UseEffect para setear el state "form" como falso al principio, con el objetivo de mostrar el formulario de crear. Luego, registrar los cambios en
@@ -128,13 +134,13 @@ const NewWorkerForm = ({
         }}
         enableReinitialize
         validationSchema={valSchema}
-        onSubmit={(values) => {
-          handleSubmitUpdate(values);
-          handleResetFormToCreate();
+        onSubmit={(values, { resetForm }) => {
+          handleUpdateSubmit(values);
+          resetForm();
         }}
       >
         {({ errors, touched, setFieldValue }) => (
-          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center">
+          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-gray-500">
             <h1 className="text-xl">Editar trabajador</h1>
             <div className="flex flex-col h-fit">
               <label htmlFor="name" className="text-white">
