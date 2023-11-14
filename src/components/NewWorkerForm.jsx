@@ -1,12 +1,15 @@
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { formatRut } from "@fdograph/rut-utilities";
+import { useState, useEffect } from "react";
 
 const NewWorkerForm = ({
   handleSubmitCreate,
   handleSubmitUpdate,
   workerToUpdate,
 }) => {
+  const [form, setForm] = useState();
+
   const valSchema = Yup.object().shape({
     name: Yup.string().required("Campo obligatorio"),
 
@@ -94,6 +97,25 @@ const NewWorkerForm = ({
     );
   };
 
+  //Todo lo que está abajo corresponde al formulario para actualizar los datos del trabajador
+
+  const handleFormRender = () => {
+    if (workerToUpdate.toUpdate) {
+      setForm(true);
+    } else {
+      setForm(false);
+    }
+  };
+
+  const handleResetFormToCreate = () => {
+    setForm(false);
+  };
+
+  //UseEffect para setear el state "form" como falso al principio, con el objetivo de mostrar el formulario de crear. Luego, registrar los cambios en
+  //workerToUpdate y permitir variación entre uno y otro formulario
+  useEffect(() => {
+    handleFormRender();
+  }, [workerToUpdate]);
 
   const updateWorkerForm = () => {
     return (
@@ -106,9 +128,9 @@ const NewWorkerForm = ({
         }}
         enableReinitialize
         validationSchema={valSchema}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values) => {
           handleSubmitUpdate(values);
-          resetForm();
+          handleResetFormToCreate();
         }}
       >
         {({ errors, touched, setFieldValue }) => (
@@ -163,7 +185,16 @@ const NewWorkerForm = ({
               >
                 actualizar datos
               </button>
-              <button type="button">
+              <button
+                type="button"
+                onClick={() => {
+                  handleResetFormToCreate();
+                  setFieldValue("id", "");
+                  setFieldValue("name", "");
+                  setFieldValue("lastName", "");
+                  setFieldValue("rut", "");
+                }}
+              >
                 volver
               </button>
             </div>
@@ -173,9 +204,12 @@ const NewWorkerForm = ({
     );
   };
 
+  //Fin de la parte para controlar el formulario para actualizar los datos del trabajador
+
   return (
     <div>
-      {workerToUpdate.toUpdate ? updateWorkerForm() : createWorkerForm()}
+      {/* {workerToUpdate.toUpdate ? updateWorkerForm() : createWorkerForm()} */}
+      {form ? updateWorkerForm() : createWorkerForm()}
     </div>
   );
 };
