@@ -2,6 +2,8 @@ import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { formatRut } from "@fdograph/rut-utilities";
 import { useState, useEffect } from "react";
+import isEqual from "lodash.isequal";
+import Swal from "sweetalert2";
 
 const NewWorkerForm = ({
   handleSubmitCreate,
@@ -142,20 +144,31 @@ const NewWorkerForm = ({
     handleFormRender();
   }, [workerToUpdate]);
 
+  const initialValuesForUpdate = {
+    name: workerToUpdate.name,
+    lastName: workerToUpdate.lastName,
+    rut: workerToUpdate.rut,
+    id: workerToUpdate.id,
+  };
+
   const updateWorkerForm = () => {
     return (
       <Formik
-        initialValues={{
-          name: workerToUpdate.name,
-          lastName: workerToUpdate.lastName,
-          rut: workerToUpdate.rut,
-          id: workerToUpdate.id,
-        }}
+        initialValues={initialValuesForUpdate}
         enableReinitialize
         validationSchema={valSchema}
         onSubmit={(values, { resetForm }) => {
-          handleUpdateSubmit(values);
-          resetForm();
+          if (isEqual(initialValuesForUpdate, values)) {
+            Swal.fire({
+              icon: "error",
+              text: "No se registraron cambios en la información del trabajador",
+              background: "#374be5",
+              color: "#fff",
+            });
+          } else {
+            handleUpdateSubmit(values);
+            resetForm();
+          }
         }}
       >
         {({ errors, touched, setFieldValue }) => (
