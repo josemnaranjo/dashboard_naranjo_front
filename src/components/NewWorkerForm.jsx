@@ -34,7 +34,7 @@ const NewWorkerForm = ({
         }}
       >
         {({ errors, touched, setFieldValue }) => (
-          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-gray-400">
+          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-secondary-middle">
             <h1 className="text-xl">Nuevo trabajador</h1>
             <div className="flex flex-col h-fit">
               <label htmlFor="name" className="text-white">
@@ -108,8 +108,8 @@ const NewWorkerForm = ({
     handleResetFormToCreate();
   };
 
-   // transformar esta funcion en un hook
-   const handleFormRender = () => {
+  // transformar esta funcion en un hook
+  const handleFormRender = () => {
     if (workerToUpdate.toUpdate) {
       setForm(true);
     } else {
@@ -140,7 +140,7 @@ const NewWorkerForm = ({
         }}
       >
         {({ errors, touched, setFieldValue }) => (
-          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-gray-500">
+          <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-primary-middle">
             <h1 className="text-xl">Editar trabajador</h1>
             <div className="flex flex-col h-fit">
               <label htmlFor="name" className="text-white">
