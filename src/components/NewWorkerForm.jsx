@@ -10,12 +10,22 @@ const NewWorkerForm = ({
 }) => {
   const [form, setForm] = useState();
 
+  const re = /^[0-9]{7,8}[-]{1}[0-9kK]{1}$/;
+
+  const validationRut = (value) => {
+    let error;
+    if (!value) {
+      error = "Por favor, ingresar RUT del trabajador";
+    } else if (!re.test(value)) {
+      error = "Formato de RUT incorrecto";
+    }
+    return error;
+  };
+
   const valSchema = Yup.object().shape({
     name: Yup.string().required("Campo obligatorio"),
 
     lastName: Yup.string().required("Campo obligatorio"),
-
-    rut: Yup.string().required("Campo obligatorio"),
   });
 
   const createWorkerForm = () => {
@@ -73,6 +83,7 @@ const NewWorkerForm = ({
                   const formattedRut = formatRut(event.target.value);
                   setFieldValue("rut", formattedRut);
                 }}
+                validate={validationRut}
               />
               {errors.rut && touched.rut ? (
                 <p className="text-label text-red-500">{errors.rut}</p>
