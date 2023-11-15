@@ -10,6 +10,8 @@ const NewWorkerForm = ({
 }) => {
   const [form, setForm] = useState();
 
+  //VALIDACIONES
+
   const re = /^[0-9]{7,8}[-]{1}[0-9kK]{1}$/;
 
   const validationRut = (value) => {
@@ -27,6 +29,10 @@ const NewWorkerForm = ({
 
     lastName: Yup.string().required("Campo obligatorio"),
   });
+
+  //FIN VALIDACIONES
+
+  //FORMULARIO CREAR TRABAJADOR
 
   const createWorkerForm = () => {
     return (
@@ -107,6 +113,8 @@ const NewWorkerForm = ({
       </Formik>
     );
   };
+
+  // FIN FORMULARIO CREAR TRABAJADOR
 
   //Todo lo que está abajo corresponde al formulario para actualizar los datos del trabajador
 
@@ -190,6 +198,7 @@ const NewWorkerForm = ({
                   const formattedRut = formatRut(event.target.value);
                   setFieldValue("rut", formattedRut);
                 }}
+                validate={validationRut}
               />
               {errors.rut && touched.rut ? (
                 <p className="text-label text-red-500">{errors.rut}</p>
