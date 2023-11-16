@@ -54,13 +54,26 @@ const useStore = create(
             background: "#374be5",
             color: "#fff",
           });
-        }
-        if (response.data.mensaje === "Trabajador restaurado exitosamente") {
+        } else if (
+          response.data.mensaje === "Trabajador restaurado exitosamente"
+        ) {
           const newWorkers = await getAllWorkers();
           set({ workers: newWorkers.data });
           Swal.fire({
             icon: "success",
-            text: "Trabajador creado con éxito",
+            text: "Trabajador restaurado con éxito",
+            background: "#374be5",
+            color: "#fff",
+          });
+        } else if (
+          response.data.mensaje ===
+          "El trabajador ya existe en la base de datos"
+        ) {
+          const newWorkers = await getAllWorkers();
+          set({ workers: newWorkers.data });
+          Swal.fire({
+            icon: "error",
+            text: "El trabajador ya existe en la base de datos",
             background: "#374be5",
             color: "#fff",
           });

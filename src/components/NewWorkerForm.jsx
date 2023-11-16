@@ -32,8 +32,6 @@ const NewWorkerForm = ({
     lastName: Yup.string().required("Campo obligatorio"),
   });
 
-  //FIN VALIDACIONES
-
   //FORMULARIO CREAR TRABAJADOR
 
   const createWorkerForm = () => {
@@ -47,8 +45,8 @@ const NewWorkerForm = ({
         }}
         validationSchema={valSchema}
         onSubmit={(values, { resetForm }) => {
-          handleSubmitCreate(values);
-          resetForm();
+            handleSubmitCreate(values);
+            resetForm();
         }}
       >
         {({ errors, touched, setFieldValue }) => (
@@ -116,9 +114,7 @@ const NewWorkerForm = ({
     );
   };
 
-  // FIN FORMULARIO CREAR TRABAJADOR
-
-  //Todo lo que está abajo corresponde al formulario para actualizar los datos del trabajador
+  //FORMULARIO ACTUALIZAR TRABAJADOR
 
   const handleResetFormToCreate = () => {
     setForm(false);
@@ -242,8 +238,6 @@ const NewWorkerForm = ({
       </Formik>
     );
   };
-
-  //Fin de la parte para controlar el formulario para actualizar los datos del trabajador
 
   return (
     <div>
