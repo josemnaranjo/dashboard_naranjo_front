@@ -7,6 +7,7 @@ import {
 } from "../api/workers.services";
 import { devtools } from "zustand/middleware";
 import Swal from "sweetalert2";
+import { data } from "autoprefixer";
 
 const useStore = create(
   devtools((set) => ({
@@ -79,9 +80,14 @@ const useStore = create(
           });
         }
       } catch (err) {
-        alert(
-          "Error con la base de datos. No se pudo crear el trabajador solicitado"
-        );
+        const dataError = err.response.data;
+        console.log(dataError);
+        Swal.fire({
+          icon: "error",
+          text: "El rut ya existe en la base de datos.",
+          background: "#374be5",
+          color: "#fff",
+        });
       }
     },
     updateWorkerAsync: async (worker) => {
