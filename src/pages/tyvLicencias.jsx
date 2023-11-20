@@ -35,10 +35,55 @@ const TyvLicencias = () => {
     },
   ];
 
+  const workersWithLicenseData = [
+    {
+      id: 1,
+      name: "Prueba",
+      lastName: "Uno",
+      licenceStarDate: null,
+      licenceEndDate: null,
+    },
+    {
+      id: 2,
+      name: "Prueba",
+      lastName: "Dos",
+      licenceStarDate: null,
+      licenceEndDate: null,
+    },
+    {
+      id: 3,
+      name: "Prueba",
+      lastName: "Tres",
+      licenceStarDate: null,
+      licenceEndDate: null,
+    },
+    {
+      id: 4,
+      name: "Prueba",
+      lastName: "Cuatro",
+      licenceStarDate: null,
+      licenceEndDate: null,
+    },
+    {
+      id: 5,
+      name: "Prueba",
+      lastName: "Cinco",
+      licenceStarDate: "01-01-2024",
+      licenceEndDate: "10-01-2024",
+    },
+    {
+      id: 6,
+      name: "Prueba",
+      lastName: "Seis",
+      licenceStarDate: "20-01-2024",
+      licenceEndDate: "27-01-2024",
+    },
+  ];
+
   return (
     <div className="grid grid-cols-2 h-4/5">
       <WorkerListToAddLicense workersData={workersData} />
-      <WorkerListWithLicense />
+      <WorkerListWithLicense workersWithLicenseData={workersWithLicenseData} />
     </div>
   );
 };
