@@ -241,7 +241,6 @@ const NewWorkerForm = ({
 
   return (
     <div>
-      {/* {workerToUpdate.toUpdate ? updateWorkerForm() : createWorkerForm()} */}
       {form ? updateWorkerForm() : createWorkerForm()}
     </div>
   );
