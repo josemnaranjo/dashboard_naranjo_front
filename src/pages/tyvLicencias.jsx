@@ -1,5 +1,6 @@
 import WorkerListToAddLicense from "../components/WorkerListToAddLicense";
 import WorkerListWithLicense from "../components/WorkerListWithLicense";
+import LicenseForm from "../components/LicenseForm";
 
 const TyvLicencias = () => {
   const workersData = [
@@ -79,11 +80,18 @@ const TyvLicencias = () => {
       licenceEndDate: "27-01-2024",
     },
   ];
+  const toggleForm = true;
 
   return (
     <div className="grid grid-cols-2 h-4/5">
       <WorkerListToAddLicense workersData={workersData} />
-      <WorkerListWithLicense workersWithLicenseData={workersWithLicenseData} />
+      {toggleForm ? (
+        <LicenseForm />
+      ) : (
+        <WorkerListWithLicense
+          workersWithLicenseData={workersWithLicenseData}
+        />
+      )}
     </div>
   );
 };
