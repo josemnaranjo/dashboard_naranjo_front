@@ -17,13 +17,13 @@ const PaginatedWorkersWithLicense = ({
   };
   return (
     <div>
-      <ul className="text-white grid grid-rows-2 gap-2 mt-4 justify-center">
+      <ul className="grid grid-rows-2 justify-center gap-2 mt-4 text-white">
         {currentItems?.map((worker) => (
           <li
             className="grid grid-rows-4 justify-center p-4 rounded-xl border-2 border-gray-200 bg-gray-400"
             key={worker.id}
           >
-            <h2 className="py-1 line-clamp-1" title={worker.lastName}>
+            <h2 className="py-1" title={worker.lastName}>
               {worker.name} {worker.lastName}
             </h2>
             <h2>Fecha inicio: {worker.licenceStarDate}</h2>
