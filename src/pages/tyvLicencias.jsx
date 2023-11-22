@@ -70,14 +70,14 @@ const TyvLicencias = () => {
       name: "Prueba",
       lastName: "Cinco",
       licenceStarDate: "01-01-2024",
-      licenceEndDate: "10-01-2024",
+      licenceEndDate: "01-10-2024",
     },
     {
       id: 6,
       name: "Prueba",
       lastName: "Seis",
-      licenceStarDate: "20-01-2024",
-      licenceEndDate: "27-01-2024",
+      licenceStarDate: "01-20-2024",
+      licenceEndDate: "01-27-2024",
     },
   ];
   const toggleForm = true;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
+import dayjs from "dayjs";
 
 const PaginatedWorkersWithLicense = ({
   workersWithLicenseData,
@@ -26,8 +27,8 @@ const PaginatedWorkersWithLicense = ({
             <h2 className="py-1" title={worker.lastName}>
               {worker.name} {worker.lastName}
             </h2>
-            <h2>Fecha inicio: {worker.licenceStarDate}</h2>
-            <h2>Fecha termino: {worker.licenceEndDate}</h2>
+            <h2>Fecha inicio: {dayjs(worker.licenceStarDate).format("DD/MM/YYYY")}</h2>
+            <h2>Fecha termino: {dayjs(worker.licenceEndDate).format("DD/MM/YYYY")}</h2>
             <div className="flex justify-around">
               <button className="w-20 bg-primary-middle text-white rounded-xl  hover:bg-primary-dark hover:drop-shadow-md">
                 borrar

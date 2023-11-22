@@ -1,12 +1,14 @@
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const valSchema = Yup.object().shape({
   starDate: Yup.string().required("Campo obligatorio"),
   finishDate: Yup.string().required("Campo obligatorio"),
 });
 
-const toggleCreateOrEdit = true;
+const toggleCreateOrEdit = false;
 
 const createLicense = () => {
   return (
@@ -21,8 +23,8 @@ const createLicense = () => {
         resetForm();
       }}
     >
-      {({ errors, touched }) => (
-        <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-secondary-middle">
+      {({ errors, touched, setFieldValue, values }) => (
+        <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-center gap-10 items-center border-2 border-secondary-middle">
           <div className="text-xl">
             <h1>Prueba Uno</h1>
             <h1>17.353.051-K</h1>
@@ -31,11 +33,14 @@ const createLicense = () => {
             <label htmlFor="starDate" className="text-white">
               Fecha de inicio
             </label>
-            <Field
-              id="starDate"
-              type="text"
-              name="starDate"
-              className="w-64 h-7 rounded-lg px-2 text-black"
+            <DatePicker
+              selected={values.starDate}
+              onChange={(date) => setFieldValue("starDate", date)}
+              dateFormat={"dd-MM-yyyy"}
+              minDate={new Date()}
+              placeholderText="seleccione fecha de inicio"
+              className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
+              popperPlacement="top-end"
             />
             {errors.starDate && touched.starDate ? (
               <p className="text-label  text-red-500">{errors.starDate}</p>
@@ -43,11 +48,13 @@ const createLicense = () => {
           </div>
           <div className="flex flex-col h-fit">
             <label htmlFor="finishDate">Fecha de término</label>
-            <Field
-              id="finishDate"
-              type="text"
-              name="finishDate"
-              className="w-64 h-7 rounded-lg px-2 text-black"
+            <DatePicker
+              selected={values.finishDate}
+              onChange={(date) => setFieldValue("finishDate", date)}
+              dateFormat={"dd-MM-yyyy"}
+              minDate={new Date()}
+              placeholderText="seleccione fecha de termino"
+              className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
             />
             {errors.finishDate && touched.finishDate ? (
               <p className="text-label text-red-500">{errors.finishDate}</p>
@@ -78,7 +85,7 @@ const editLicense = () => {
         resetForm();
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, values, setFieldValue }) => (
         <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-primary-middle">
           <div className="text-xl">
             <h1>Prueba Uno</h1>
@@ -88,11 +95,14 @@ const editLicense = () => {
             <label htmlFor="starDate" className="text-white">
               Fecha de inicio
             </label>
-            <Field
-              id="starDate"
-              type="text"
-              name="starDate"
-              className="w-64 h-7 rounded-lg px-2 text-black"
+            <DatePicker
+              selected={values.starDate}
+              onChange={(date) => setFieldValue("starDate", date)}
+              dateFormat={"dd-MM-yyyy"}
+              minDate={new Date()}
+              placeholderText="seleccione fecha de inicio"
+              className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
+              popperPlacement="top-end"
             />
             {errors.starDate && touched.starDate ? (
               <p className="text-label  text-red-500">{errors.starDate}</p>
@@ -100,11 +110,13 @@ const editLicense = () => {
           </div>
           <div className="flex flex-col h-fit">
             <label htmlFor="finishDate">Fecha de término</label>
-            <Field
-              id="finishDate"
-              type="text"
-              name="finishDate"
-              className="w-64 h-7 rounded-lg px-2 text-black"
+            <DatePicker
+              selected={values.finishDate}
+              onChange={(date) => setFieldValue("finishDate", date)}
+              dateFormat={"dd-MM-yyyy"}
+              minDate={new Date()}
+              placeholderText="seleccione fecha de termino"
+              className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
             />
             {errors.finishDate && touched.finishDate ? (
               <p className="text-label text-red-500">{errors.finishDate}</p>
@@ -123,7 +135,7 @@ const editLicense = () => {
 };
 
 const LicenseForm = () => {
-  return <div>{toggleCreateOrEdit ? createLicense(): editLicense()}</div>;
+  return <div>{toggleCreateOrEdit ? createLicense() : editLicense()}</div>;
 };
 
 export default LicenseForm;
