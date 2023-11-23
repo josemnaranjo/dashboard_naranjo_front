@@ -4,15 +4,15 @@ import {
   deleteWorker,
   createWorker,
   updateWorker,
+  getAllWorkersWithLicense,
 } from "../api/workers.services";
 import { devtools } from "zustand/middleware";
 import Swal from "sweetalert2";
 
-
 const useStore = create(
   devtools((set) => ({
     workers: [],
-    mensaje: "",
+    workersWithLicense: [],
     getWorkersAsync: async () => {
       try {
         const response = await getAllWorkers();
@@ -135,6 +135,16 @@ const useStore = create(
           return { ...state };
         }
       });
+    },
+    getWorkersWithLicenseAsync: async () => {
+      try {
+        const response = await getAllWorkersWithLicense();
+        set({ workersWithLicense: response.data });
+      } catch (error) {
+        alert(
+          "Error en la base de datos. No se pudo recuperar la información solicitada"
+        );
+      }
     },
   }))
 );

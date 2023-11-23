@@ -11,3 +11,6 @@ export const deleteWorker = async (rut) =>
 
 export const updateWorker = async (workerData) =>
   await axios.put(`http://localhost:8000/update-worker`, workerData);
+
+export const getAllWorkersWithLicense = async () =>
+  await axios.get("http://localhost:8000/get-workers-with-licence");
