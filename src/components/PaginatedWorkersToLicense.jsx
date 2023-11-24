@@ -1,7 +1,11 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 
-const PaginatedWorkersToLicense = ({ itemsPerPage, workersData }) => {
+const PaginatedWorkersToLicense = ({
+  itemsPerPage,
+  workersData,
+  setToggleForm,
+}) => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = workersData.slice(itemOffset, endOffset);
@@ -11,6 +15,10 @@ const PaginatedWorkersToLicense = ({ itemsPerPage, workersData }) => {
     const newOffset = (event.selected * itemsPerPage) % workersData.length;
     setItemOffset(newOffset);
   };
+
+  const handleToggleForm = () => {
+    setToggleForm(true);
+  };
   return (
     <div>
       <ul className="text-white grid gap-2 px-5">
@@ -19,7 +27,10 @@ const PaginatedWorkersToLicense = ({ itemsPerPage, workersData }) => {
             <h2 className="py-1 line-clamp-1" title={worker.lastName}>
               {worker.name} {worker.lastName}
             </h2>
-            <button className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md">
+            <button
+              className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
+              onClick={handleToggleForm}
+            >
               agregar licencia
             </button>
           </li>

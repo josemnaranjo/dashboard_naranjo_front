@@ -1,21 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import WorkerListToAddLicense from "../components/WorkerListToAddLicense";
 import WorkerListWithLicense from "../components/WorkerListWithLicense";
 import LicenseForm from "../components/LicenseForm";
 import useStore from "../store/workerStore";
 
 const TyvLicencias = () => {
-  const { workers, workersWithLicense, getWorkersAsync, getWorkersWithLicenseAsync } = useStore();
-
-  const toggleForm = false;
+  const [toggleForm, setToggleForm] = useState(false);
+  const {
+    workers,
+    workersWithLicense,
+    getWorkersAsync,
+    getWorkersWithLicenseAsync,
+  } = useStore();
 
   useEffect(() => {
     getWorkersAsync();
-    getWorkersWithLicenseAsync()
+    getWorkersWithLicenseAsync();
   }, []);
   return (
     <div className="grid grid-cols-2 h-4/5">
-      <WorkerListToAddLicense workersData={workers} />
+      <WorkerListToAddLicense workersData={workers} setToggleForm={setToggleForm} />
       {toggleForm ? (
         <LicenseForm />
       ) : (
