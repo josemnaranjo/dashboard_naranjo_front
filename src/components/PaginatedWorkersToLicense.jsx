@@ -5,6 +5,7 @@ const PaginatedWorkersToLicense = ({
   itemsPerPage,
   workersData,
   setToggleForm,
+  setWorkerToAddLicense,
 }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
@@ -19,6 +20,9 @@ const PaginatedWorkersToLicense = ({
   const handleToggleForm = () => {
     setToggleForm(true);
   };
+  const handleWorkerToAddlicense = (data) => {
+    setWorkerToAddLicense(data);
+  };
   return (
     <div>
       <ul className="text-white grid gap-2 px-5">
@@ -29,7 +33,11 @@ const PaginatedWorkersToLicense = ({
             </h2>
             <button
               className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
-              onClick={handleToggleForm}
+              onClick={() => {
+                handleToggleForm();
+                console.log(worker);
+                handleWorkerToAddlicense(worker);
+              }}
             >
               agregar licencia
             </button>

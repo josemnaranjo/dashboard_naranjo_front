@@ -2,7 +2,7 @@ import { BsSearch } from "react-icons/bs";
 import { BsArrowRepeat } from "react-icons/bs";
 import PaginatedWorkersToLicense from "./PaginatedWorkersToLicense";
 
-const WorkerListToAddLicense = ({ workersData, setToggleForm }) => {
+const WorkerListToAddLicense = ({ workersData, setToggleForm, setWorkerToAddLicense }) => {
   return (
     <div className="bg-gray-300 rounded-xl flex flex-col justify-center gap-10 border-2 border-gray-400">
       <div className="flex justify-center items-center gap-2">
@@ -30,7 +30,7 @@ const WorkerListToAddLicense = ({ workersData, setToggleForm }) => {
           </button>
         )} */}
       </div>
-      <PaginatedWorkersToLicense workersData={workersData} itemsPerPage={5} setToggleForm={setToggleForm} />
+      <PaginatedWorkersToLicense workersData={workersData} itemsPerPage={5} setToggleForm={setToggleForm} setWorkerToAddLicense={setWorkerToAddLicense} />
     </div>
   );
 };
