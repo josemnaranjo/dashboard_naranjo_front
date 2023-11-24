@@ -35,7 +35,6 @@ const PaginatedWorkersToLicense = ({
               className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
               onClick={() => {
                 handleToggleForm();
-                console.log(worker);
                 handleWorkerToAddlicense(worker);
               }}
             >
