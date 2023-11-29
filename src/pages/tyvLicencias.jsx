@@ -8,6 +8,7 @@ const TyvLicencias = () => {
   const [toggleForm, setToggleForm] = useState(false);
   const [toggleCreateOrEdit, setToggleCreateOrEdit] = useState(true);
   const [workerToAddLicense, setWorkerToAddLicense] = useState();
+  const [workerWithLicenseToEdit, setWorkerWithLicenseToEdit] = useState();
   const {
     workers,
     workersWithLicense,
@@ -27,9 +28,18 @@ const TyvLicencias = () => {
         setWorkerToAddLicense={setWorkerToAddLicense}
       />
       {toggleForm ? (
-        <LicenseForm workerToAddLicense={workerToAddLicense} toggleCreateOrEdit={toggleCreateOrEdit}  />
+        <LicenseForm
+          workerToAddLicense={workerToAddLicense}
+          workerWithLicenseToEdit={workerWithLicenseToEdit}
+          toggleCreateOrEdit={toggleCreateOrEdit}
+        />
       ) : (
-        <WorkerListWithLicense workersWithLicenseData={workersWithLicense} setToggleCreateOrEdit={setToggleCreateOrEdit} setToggleForm={setToggleForm} />
+        <WorkerListWithLicense
+          workersWithLicenseData={workersWithLicense}
+          setToggleCreateOrEdit={setToggleCreateOrEdit}
+          setWorkerWithLicenseToEdit={setWorkerWithLicenseToEdit}
+          setToggleForm={setToggleForm}
+        />
       )}
     </div>
   );

@@ -2,6 +2,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import dayjs from "dayjs";
 
 const valSchema = Yup.object().shape({
   starDate: Yup.string().required("Campo obligatorio"),
@@ -72,30 +73,34 @@ const createLicense = (workerData) => {
   );
 };
 
-const editLicense = () => {
+const editLicense = (workerWithLicenseData) => {
   return (
     <Formik
       initialValues={{
-        starDate: "",
-        finishDate: "",
+        starDate: new Date(workerWithLicenseData.licenceStartDate),
+        finishDate: new Date(workerWithLicenseData.licenceEndDate),
       }}
       validationSchema={valSchema}
       onSubmit={(values, { resetForm }) => {
         console.log(values);
         resetForm();
       }}
+      enableReinitialize
     >
       {({ errors, touched, values, setFieldValue }) => (
         <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-primary-middle">
           <div className="text-xl">
-            <h1>Prueba Uno</h1>
-            <h1>17.353.051-K</h1>
+            <h1>
+              {workerWithLicenseData.name} {workerWithLicenseData.lastName}
+            </h1>
+            <h1>{workerWithLicenseData.rut}</h1>
           </div>
-          <div className="flex flex-col h-fit">
+          <div className="flex flex-col h-fit items-center gap-2 ">
             <label htmlFor="starDate" className="text-white">
-              Fecha de inicio
+              Fecha de inicio: {dayjs(workerWithLicenseData.licenceStartDate).format("DD-MM-YYYY")}
             </label>
             <DatePicker
+              todayButton="hoy"
               selected={values.starDate}
               onChange={(date) => setFieldValue("starDate", date)}
               dateFormat={"dd-MM-yyyy"}
@@ -108,9 +113,10 @@ const editLicense = () => {
               <p className="text-label  text-red-500">{errors.starDate}</p>
             ) : null}
           </div>
-          <div className="flex flex-col h-fit">
-            <label htmlFor="finishDate">Fecha de término</label>
+          <div className="flex flex-col items-center h-fit gap-2">
+            <label htmlFor="finishDate">Fecha de término: {dayjs(workerWithLicenseData.licenceEndDate).format("DD-MM-YYYY")}</label>
             <DatePicker
+              todayButton="hoy"
               selected={values.finishDate}
               onChange={(date) => setFieldValue("finishDate", date)}
               dateFormat={"dd-MM-yyyy"}
@@ -134,10 +140,16 @@ const editLicense = () => {
   );
 };
 
-const LicenseForm = ({ workerToAddLicense, toggleCreateOrEdit }) => {
+const LicenseForm = ({
+  workerToAddLicense,
+  toggleCreateOrEdit,
+  workerWithLicenseToEdit,
+}) => {
   return (
     <div>
-      {toggleCreateOrEdit ? createLicense(workerToAddLicense) : editLicense()}
+      {toggleCreateOrEdit
+        ? createLicense(workerToAddLicense)
+        : editLicense(workerWithLicenseToEdit)}
     </div>
   );
 };

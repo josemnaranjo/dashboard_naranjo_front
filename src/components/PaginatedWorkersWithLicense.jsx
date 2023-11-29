@@ -6,7 +6,8 @@ const PaginatedWorkersWithLicense = ({
   workersWithLicenseData,
   itemsPerPage,
   setToggleCreateOrEdit,
-  setToggleForm
+  setWorkerWithLicenseToEdit,
+  setToggleForm,
 }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
@@ -19,9 +20,10 @@ const PaginatedWorkersWithLicense = ({
     setItemOffset(newOffset);
   };
 
-  const handleToggleCreateOrEdit = () => {
+  const handleToggleCreateOrEdit = (worker) => {
+    setWorkerWithLicenseToEdit(worker);
     setToggleCreateOrEdit(false);
-    setToggleForm(true)
+    setToggleForm(true);
   };
   return (
     <div>
@@ -35,10 +37,10 @@ const PaginatedWorkersWithLicense = ({
               {worker.name} {worker.lastName}
             </h2>
             <h2>
-              Fecha inicio: {dayjs(worker.licenceStarDate).format("DD/MM/YYYY")}
+              Fecha inicio: {dayjs(worker.licenceStartDate).format("DD-MM-YYYY")}
             </h2>
             <h2>
-              Fecha termino: {dayjs(worker.licenceEndDate).format("DD/MM/YYYY")}
+              Fecha termino: {dayjs(worker.licenceEndDate).format("DD-MM-YYYY")}
             </h2>
             <div className="flex justify-around">
               <button className="w-20 bg-primary-middle text-white rounded-xl  hover:bg-primary-dark hover:drop-shadow-md">
@@ -46,7 +48,7 @@ const PaginatedWorkersWithLicense = ({
               </button>
               <button
                 className="w-20 bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md focus:ring focus:ring-secondary-middle"
-                onClick={handleToggleCreateOrEdit}
+                onClick={()=> handleToggleCreateOrEdit(worker)}
               >
                 editar
               </button>
