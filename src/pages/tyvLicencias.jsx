@@ -14,6 +14,7 @@ const TyvLicencias = () => {
     workersWithLicense,
     getWorkersAsync,
     getWorkersWithLicenseAsync,
+    updateWorkerLicense
   } = useStore();
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const TyvLicencias = () => {
           workerToAddLicense={workerToAddLicense}
           workerWithLicenseToEdit={workerWithLicenseToEdit}
           toggleCreateOrEdit={toggleCreateOrEdit}
+          updateWorkerLicense={updateWorkerLicense}
         />
       ) : (
         <WorkerListWithLicense

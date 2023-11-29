@@ -5,6 +5,7 @@ import {
   createWorker,
   updateWorker,
   getAllWorkersWithLicense,
+  updateLincenseForWorker,
 } from "../api/workers.services";
 import { devtools } from "zustand/middleware";
 import Swal from "sweetalert2";
@@ -144,6 +145,19 @@ const useStore = create(
         alert(
           "Error en la base de datos. No se pudo recuperar la información solicitada"
         );
+      }
+    },
+    updateWorkerLicense: async (rut, licenseData) => {
+      try {
+        const response = await updateLincenseForWorker(rut, licenseData);
+        if (
+          response.data.message ===
+          "Inicio y termino de licencia médica actualizada"
+        ) {
+          alert("Licencia actualizada con éxito");
+        }
+      } catch (error) {
+        console.log(error);
       }
     },
   }))

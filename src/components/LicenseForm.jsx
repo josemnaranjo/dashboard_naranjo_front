@@ -10,16 +10,22 @@ const valSchema = Yup.object().shape({
   finishDate: Yup.string().required("Campo obligatorio"),
 });
 
-const createLicense = (workerData) => {
+const createLicense = (workerData, updateWorkerLicense) => {
   return (
     <Formik
       initialValues={{
         starDate: "",
         finishDate: "",
+        rut: workerData.rut,
       }}
       validationSchema={valSchema}
       onSubmit={(values, { resetForm }) => {
-        console.log(values);
+        const rut = values.rut;
+        const newLicenseData = {
+          licenceStartDate: values.starDate,
+          licenceEndDate: values.finishDate,
+        };
+        updateWorkerLicense(rut, newLicenseData);
         resetForm();
       }}
     >
@@ -29,7 +35,7 @@ const createLicense = (workerData) => {
             <h1>
               {workerData.name} {workerData.lastName}
             </h1>
-            <h1>{formatRut(workerData.rut,RutFormat.DOTS_DASH)}</h1>
+            <h1>{formatRut(workerData.rut, RutFormat.DOTS_DASH)}</h1>
           </div>
           <div className="flex flex-col h-fit">
             <label htmlFor="starDate" className="text-white">
@@ -57,6 +63,7 @@ const createLicense = (workerData) => {
               minDate={new Date()}
               placeholderText="seleccione fecha de termino"
               className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
+              popperPlacement="top-end"
             />
             {errors.finishDate && touched.finishDate ? (
               <p className="text-label text-red-500">{errors.finishDate}</p>
@@ -150,11 +157,12 @@ const LicenseForm = ({
   workerToAddLicense,
   toggleCreateOrEdit,
   workerWithLicenseToEdit,
+  updateWorkerLicense,
 }) => {
   return (
     <div>
       {toggleCreateOrEdit
-        ? createLicense(workerToAddLicense)
+        ? createLicense(workerToAddLicense, updateWorkerLicense)
         : editLicense(workerWithLicenseToEdit)}
     </div>
   );
