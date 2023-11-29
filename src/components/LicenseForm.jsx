@@ -1,6 +1,7 @@
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
+import { formatRut, RutFormat } from "@fdograph/rut-utilities";
 import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
 
@@ -93,11 +94,14 @@ const editLicense = (workerWithLicenseData) => {
             <h1>
               {workerWithLicenseData.name} {workerWithLicenseData.lastName}
             </h1>
-            <h1>{workerWithLicenseData.rut}</h1>
+            <h1>{formatRut(workerWithLicenseData.rut, RutFormat.DOTS_DASH)}</h1>
           </div>
           <div className="flex flex-col h-fit items-center gap-2 ">
             <label htmlFor="starDate" className="text-white">
-              Fecha de inicio: {dayjs(workerWithLicenseData.licenceStartDate).format("DD-MM-YYYY")}
+              Fecha de inicio:{" "}
+              {dayjs(workerWithLicenseData.licenceStartDate).format(
+                "DD-MM-YYYY"
+              )}
             </label>
             <DatePicker
               todayButton="hoy"
@@ -114,7 +118,10 @@ const editLicense = (workerWithLicenseData) => {
             ) : null}
           </div>
           <div className="flex flex-col items-center h-fit gap-2">
-            <label htmlFor="finishDate">Fecha de término: {dayjs(workerWithLicenseData.licenceEndDate).format("DD-MM-YYYY")}</label>
+            <label htmlFor="finishDate">
+              Fecha de término:{" "}
+              {dayjs(workerWithLicenseData.licenceEndDate).format("DD-MM-YYYY")}
+            </label>
             <DatePicker
               todayButton="hoy"
               selected={values.finishDate}
