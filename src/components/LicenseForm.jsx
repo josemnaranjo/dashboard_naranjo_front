@@ -29,7 +29,7 @@ const createLicense = (workerData) => {
             <h1>
               {workerData.name} {workerData.lastName}
             </h1>
-            <h1>{workerData.rut}</h1>
+            <h1>{formatRut(workerData.rut,RutFormat.DOTS_DASH)}</h1>
           </div>
           <div className="flex flex-col h-fit">
             <label htmlFor="starDate" className="text-white">
@@ -86,7 +86,6 @@ const editLicense = (workerWithLicenseData) => {
         console.log(values);
         resetForm();
       }}
-      enableReinitialize
     >
       {({ errors, touched, values, setFieldValue }) => (
         <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-primary-middle">
