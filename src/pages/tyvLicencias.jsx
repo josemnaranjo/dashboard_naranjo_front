@@ -14,7 +14,8 @@ const TyvLicencias = () => {
     workersWithLicense,
     getWorkersAsync,
     getWorkersWithLicenseAsync,
-    updateWorkerLicense
+    updateWorkerLicense,
+    resetLicenseForWorkerAsync
   } = useStore();
 
   useEffect(() => {
@@ -42,6 +43,7 @@ const TyvLicencias = () => {
           setToggleCreateOrEdit={setToggleCreateOrEdit}
           setWorkerWithLicenseToEdit={setWorkerWithLicenseToEdit}
           setToggleForm={setToggleForm}
+          resetLicenseForWorkerAsync={resetLicenseForWorkerAsync}
         />
       )}
     </div>

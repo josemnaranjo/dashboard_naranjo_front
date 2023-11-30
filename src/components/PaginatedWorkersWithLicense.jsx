@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
 import dayjs from "dayjs";
+import Swal from "sweetalert2";
 
 const PaginatedWorkersWithLicense = ({
   workersWithLicenseData,
@@ -8,6 +9,7 @@ const PaginatedWorkersWithLicense = ({
   setToggleCreateOrEdit,
   setWorkerWithLicenseToEdit,
   setToggleForm,
+  resetLicenseForWorkerAsync,
 }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
@@ -25,6 +27,9 @@ const PaginatedWorkersWithLicense = ({
     setToggleCreateOrEdit(false);
     setToggleForm(true);
   };
+  const handleResetLicense = (rut) => {
+    resetLicenseForWorkerAsync(rut);
+  };
   return (
     <div>
       <ul className="grid grid-rows-2 justify-center gap-2 mt-4 text-white">
@@ -37,18 +42,44 @@ const PaginatedWorkersWithLicense = ({
               {worker.name} {worker.lastName}
             </h2>
             <h2>
-              Fecha inicio: {dayjs(worker.licenceStartDate).format("DD-MM-YYYY")}
+              Fecha inicio:{" "}
+              {dayjs(worker.licenceStartDate).format("DD-MM-YYYY")}
             </h2>
             <h2>
               Fecha termino: {dayjs(worker.licenceEndDate).format("DD-MM-YYYY")}
             </h2>
             <div className="flex justify-around">
-              <button className="w-20 bg-primary-middle text-white rounded-xl  hover:bg-primary-dark hover:drop-shadow-md">
+              <button
+                className="w-20 bg-primary-middle text-white rounded-xl  hover:bg-primary-dark hover:drop-shadow-md"
+                onClick={() =>
+                  Swal.fire({
+                    text: "¿Estas seguro de eliminar la liciencia de este trabajador?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "confirmar",
+                    cancelButtonText: "cancelar",
+                    color: "#fff",
+                    background: "#374be5",
+                    confirmButtonColor: "#E1BF1A",
+                    cancelButtonColor: "#b8b6b6",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      handleResetLicense({ rut: worker.rut });
+                      Swal.fire({
+                        color: "#fff",
+                        background: "#374be5",
+                        text: "Trabajador eliminado",
+                        icon: "success",
+                      });
+                    }
+                  })
+                }
+              >
                 borrar
               </button>
               <button
                 className="w-20 bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md focus:ring focus:ring-secondary-middle"
-                onClick={()=> handleToggleCreateOrEdit(worker)}
+                onClick={() => handleToggleCreateOrEdit(worker)}
               >
                 editar
               </button>

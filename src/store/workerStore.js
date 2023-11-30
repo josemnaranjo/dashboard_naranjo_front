@@ -6,6 +6,7 @@ import {
   updateWorker,
   getAllWorkersWithLicense,
   updateLincenseForWorker,
+  resetLicenseForWorker,
 } from "../api/workers.services";
 import { devtools } from "zustand/middleware";
 import Swal from "sweetalert2";
@@ -161,6 +162,28 @@ const useStore = create(
           Swal.fire({
             icon: "success",
             text: "Licencia creada con éxito",
+            background: "#374be5",
+            color: "#fff",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    resetLicenseForWorkerAsync: async (rut) => {
+      try {
+        const response = await resetLicenseForWorker(rut);
+        if (response.data.mensaje === "Licencia reestablecida") {
+          const rutData = rut.rut;
+          set((state) => ({
+            ...state,
+            workersWithLicense: state.workersWithLicense.filter(
+              (worker) => worker.rut !== rutData
+            ),
+          }));
+          Swal.fire({
+            icon: "success",
+            text: "Se eliminó la licencia del trabajador",
             background: "#374be5",
             color: "#fff",
           });

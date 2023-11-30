@@ -17,3 +17,6 @@ export const getAllWorkersWithLicense = async () =>
 
 export const updateLincenseForWorker = async (rut, licenseData) =>
   await axios.post(`http://localhost:8000/update-licence/${rut}`, licenseData);
+
+  export const resetLicenseForWorker = async(rut) =>
+    await axios.post("http://localhost:8000/reset-licence",rut)
