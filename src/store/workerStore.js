@@ -154,7 +154,16 @@ const useStore = create(
           response.data.message ===
           "Inicio y termino de licencia médica actualizada"
         ) {
-          alert("Licencia actualizada con éxito");
+          const worker = response.data.workerWithLicense[0];
+          set((state) => ({
+            workersWithLicense: [...state.workersWithLicense, worker],
+          }));
+          Swal.fire({
+            icon: "success",
+            text: "Licencia creada con éxito",
+            background: "#374be5",
+            color: "#fff",
+          });
         }
       } catch (error) {
         console.log(error);

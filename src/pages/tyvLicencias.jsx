@@ -34,6 +34,7 @@ const TyvLicencias = () => {
           workerWithLicenseToEdit={workerWithLicenseToEdit}
           toggleCreateOrEdit={toggleCreateOrEdit}
           updateWorkerLicense={updateWorkerLicense}
+          setToggleForm={setToggleForm}
         />
       ) : (
         <WorkerListWithLicense

@@ -10,7 +10,7 @@ const valSchema = Yup.object().shape({
   finishDate: Yup.string().required("Campo obligatorio"),
 });
 
-const createLicense = (workerData, updateWorkerLicense) => {
+const createLicense = (workerData, updateWorkerLicense, setToggleForm) => {
   return (
     <Formik
       initialValues={{
@@ -27,6 +27,7 @@ const createLicense = (workerData, updateWorkerLicense) => {
         };
         updateWorkerLicense(rut, newLicenseData);
         resetForm();
+        setToggleForm(false);
       }}
     >
       {({ errors, touched, setFieldValue, values }) => (
@@ -158,11 +159,12 @@ const LicenseForm = ({
   toggleCreateOrEdit,
   workerWithLicenseToEdit,
   updateWorkerLicense,
+  setToggleForm,
 }) => {
   return (
     <div>
       {toggleCreateOrEdit
-        ? createLicense(workerToAddLicense, updateWorkerLicense)
+        ? createLicense(workerToAddLicense, updateWorkerLicense, setToggleForm)
         : editLicense(workerWithLicenseToEdit)}
     </div>
   );
