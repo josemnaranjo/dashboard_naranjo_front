@@ -36,7 +36,7 @@ const createLicense = (workerData, updateWorkerLicense, setToggleForm) => {
             <h1>
               {workerData.name} {workerData.lastName}
             </h1>
-            <h1>{formatRut(workerData.rut, RutFormat.DOTS_DASH)}</h1>
+            <h1 className="text-center">{formatRut(workerData.rut, RutFormat.DOTS_DASH)}</h1>
           </div>
           <div className="flex flex-col h-fit">
             <label htmlFor="starDate" className="text-white">
