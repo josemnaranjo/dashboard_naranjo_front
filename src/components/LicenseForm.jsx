@@ -12,6 +12,9 @@ const valSchema = Yup.object().shape({
 });
 
 const createLicense = (workerData, updateWorkerLicense, setToggleForm) => {
+  const handleToggleForm = () => {
+    setToggleForm(false);
+  };
   return (
     <Formik
       initialValues={{
@@ -33,10 +36,10 @@ const createLicense = (workerData, updateWorkerLicense, setToggleForm) => {
     >
       {({ errors, touched, setFieldValue, values }) => (
         <Form className="bg-gray-300 text-white container mx-auto h-full w-96 rounded-xl border-2  border-secondary-middle">
-          <div className="mt-14 ml-10">
-            <BsXSquare />
-          </div>
-          <div className="flex flex-col justify-center items-center gap-8 py-14">
+          <button className="mt-14 ml-10" onClick={handleToggleForm}>
+            <BsXSquare  />
+          </button>
+          <div className="flex flex-col justify-center items-center gap-8 py-12">
             <div className="text-xl">
               <h1>
                 {workerData.name} {workerData.lastName}
