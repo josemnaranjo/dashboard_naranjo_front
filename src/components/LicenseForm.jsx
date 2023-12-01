@@ -37,7 +37,7 @@ const createLicense = (workerData, updateWorkerLicense, setToggleForm) => {
       {({ errors, touched, setFieldValue, values }) => (
         <Form className="bg-gray-300 text-white container mx-auto h-full w-96 rounded-xl border-2  border-secondary-middle">
           <button className="mt-14 ml-10" onClick={handleToggleForm}>
-            <BsXSquare  />
+            <BsXSquare />
           </button>
           <div className="flex flex-col justify-center items-center gap-8 py-12">
             <div className="text-xl">
@@ -93,7 +93,15 @@ const createLicense = (workerData, updateWorkerLicense, setToggleForm) => {
   );
 };
 
-const editLicense = (workerWithLicenseData) => {
+const editLicense = (
+  workerWithLicenseData,
+  setToggleForm,
+  setToggleCreateOrEdit
+) => {
+  const handleToggleForm = () => {
+    setToggleCreateOrEdit(true);
+    setToggleForm(false);
+  };
   return (
     <Formik
       initialValues={{
@@ -107,58 +115,67 @@ const editLicense = (workerWithLicenseData) => {
       }}
     >
       {({ errors, touched, values, setFieldValue }) => (
-        <Form className="bg-gray-300 text-white container mx-auto w-96 py-20 h-full rounded-xl flex flex-col justify-around items-center border-2 border-primary-middle">
-          <div className="text-xl">
-            <h1>
-              {workerWithLicenseData.name} {workerWithLicenseData.lastName}
-            </h1>
-            <h1>{formatRut(workerWithLicenseData.rut, RutFormat.DOTS_DASH)}</h1>
-          </div>
-          <div className="flex flex-col h-fit items-center gap-2 ">
-            <label htmlFor="starDate" className="text-white">
-              Fecha de inicio:{" "}
-              {dayjs(workerWithLicenseData.licenceStartDate).format(
-                "DD-MM-YYYY"
-              )}
-            </label>
-            <DatePicker
-              todayButton="hoy"
-              selected={values.starDate}
-              onChange={(date) => setFieldValue("starDate", date)}
-              dateFormat={"dd-MM-yyyy"}
-              minDate={new Date()}
-              placeholderText="seleccione fecha de inicio"
-              className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
-              popperPlacement="top-end"
-            />
-            {errors.starDate && touched.starDate ? (
-              <p className="text-label  text-red-500">{errors.starDate}</p>
-            ) : null}
-          </div>
-          <div className="flex flex-col items-center h-fit gap-2">
-            <label htmlFor="finishDate">
-              Fecha de término:{" "}
-              {dayjs(workerWithLicenseData.licenceEndDate).format("DD-MM-YYYY")}
-            </label>
-            <DatePicker
-              todayButton="hoy"
-              selected={values.finishDate}
-              onChange={(date) => setFieldValue("finishDate", date)}
-              dateFormat={"dd-MM-yyyy"}
-              minDate={new Date()}
-              placeholderText="seleccione fecha de termino"
-              className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
-            />
-            {errors.finishDate && touched.finishDate ? (
-              <p className="text-label text-red-500">{errors.finishDate}</p>
-            ) : null}
-          </div>
-          <button
-            type="submit"
-            className="bg-primary-middle text-white rounded-xl h-8 w-40 hover:bg-primary-dark hover:drop-shadow-md"
-          >
-            editar licencia
+        <Form className="bg-gray-300 text-white container mx-auto w-96 h-full rounded-xl border-2 border-primary-middle">
+          <button className="mt-14 ml-10" onClick={handleToggleForm}>
+            <BsXSquare />
           </button>
+          <div className=" flex flex-col justify-center items-center gap-8 py-12">
+            <div className="text-xl">
+              <h1>
+                {workerWithLicenseData.name} {workerWithLicenseData.lastName}
+              </h1>
+              <h1>
+                {formatRut(workerWithLicenseData.rut, RutFormat.DOTS_DASH)}
+              </h1>
+            </div>
+            <div className="flex flex-col h-fit items-center gap-2 ">
+              <label htmlFor="starDate" className="text-white">
+                Fecha de inicio:{" "}
+                {dayjs(workerWithLicenseData.licenceStartDate).format(
+                  "DD-MM-YYYY"
+                )}
+              </label>
+              <DatePicker
+                todayButton="hoy"
+                selected={values.starDate}
+                onChange={(date) => setFieldValue("starDate", date)}
+                dateFormat={"dd-MM-yyyy"}
+                minDate={new Date()}
+                placeholderText="seleccione fecha de inicio"
+                className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
+                popperPlacement="top-end"
+              />
+              {errors.starDate && touched.starDate ? (
+                <p className="text-label  text-red-500">{errors.starDate}</p>
+              ) : null}
+            </div>
+            <div className="flex flex-col items-center h-fit gap-2">
+              <label htmlFor="finishDate">
+                Fecha de término:{" "}
+                {dayjs(workerWithLicenseData.licenceEndDate).format(
+                  "DD-MM-YYYY"
+                )}
+              </label>
+              <DatePicker
+                todayButton="hoy"
+                selected={values.finishDate}
+                onChange={(date) => setFieldValue("finishDate", date)}
+                dateFormat={"dd-MM-yyyy"}
+                minDate={new Date()}
+                placeholderText="seleccione fecha de termino"
+                className="w-48 rounded-lg border border-stone-400 bg-white px-2 py-1 text-center text-sm text-black"
+              />
+              {errors.finishDate && touched.finishDate ? (
+                <p className="text-label text-red-500">{errors.finishDate}</p>
+              ) : null}
+            </div>
+            <button
+              type="submit"
+              className="bg-primary-middle text-white rounded-xl h-8 w-40 hover:bg-primary-dark hover:drop-shadow-md"
+            >
+              editar licencia
+            </button>
+          </div>
         </Form>
       )}
     </Formik>
@@ -171,12 +188,17 @@ const LicenseForm = ({
   workerWithLicenseToEdit,
   updateWorkerLicense,
   setToggleForm,
+  setToggleCreateOrEdit,
 }) => {
   return (
     <div>
       {toggleCreateOrEdit
         ? createLicense(workerToAddLicense, updateWorkerLicense, setToggleForm)
-        : editLicense(workerWithLicenseToEdit)}
+        : editLicense(
+            workerWithLicenseToEdit,
+            setToggleForm,
+            setToggleCreateOrEdit
+          )}
     </div>
   );
 };
