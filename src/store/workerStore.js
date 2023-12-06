@@ -148,7 +148,7 @@ const useStore = create(
         );
       }
     },
-    updateWorkerLicense: async (rut, licenseData) => {
+    createWorkerLicense: async (rut, licenseData) => {
       try {
         const response = await updateLincenseForWorker(rut, licenseData);
         if (

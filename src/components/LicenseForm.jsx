@@ -11,7 +11,7 @@ const valSchema = Yup.object().shape({
   finishDate: Yup.string().required("Campo obligatorio"),
 });
 
-const createLicense = (workerData, updateWorkerLicense, setToggleForm) => {
+const createLicense = (workerData, createWorkerLicense, setToggleForm) => {
   const handleToggleForm = () => {
     setToggleForm(false);
   };
@@ -29,7 +29,7 @@ const createLicense = (workerData, updateWorkerLicense, setToggleForm) => {
           licenceStartDate: values.starDate,
           licenceEndDate: values.finishDate,
         };
-        updateWorkerLicense(rut, newLicenseData);
+        createWorkerLicense(rut, newLicenseData);
         resetForm();
         setToggleForm(false);
       }}
@@ -107,11 +107,18 @@ const editLicense = (
       initialValues={{
         starDate: new Date(workerWithLicenseData.licenceStartDate),
         finishDate: new Date(workerWithLicenseData.licenceEndDate),
+        rut: workerWithLicenseData.rut,
       }}
       validationSchema={valSchema}
       onSubmit={(values, { resetForm }) => {
-        console.log(values);
+        const rut = values.rut;
+        const newLicenseData = {
+          licenceStartDate: values.starDate,
+          licenceEndDate: values.finishDate,
+        };
+        console.log(rut, newLicenseData);
         resetForm();
+        setToggleForm(false);
       }}
     >
       {({ errors, touched, values, setFieldValue }) => (
@@ -186,14 +193,14 @@ const LicenseForm = ({
   workerToAddLicense,
   toggleCreateOrEdit,
   workerWithLicenseToEdit,
-  updateWorkerLicense,
+  createWorkerLicense,
   setToggleForm,
   setToggleCreateOrEdit,
 }) => {
   return (
     <div>
       {toggleCreateOrEdit
-        ? createLicense(workerToAddLicense, updateWorkerLicense, setToggleForm)
+        ? createLicense(workerToAddLicense, createWorkerLicense, setToggleForm)
         : editLicense(
             workerWithLicenseToEdit,
             setToggleForm,

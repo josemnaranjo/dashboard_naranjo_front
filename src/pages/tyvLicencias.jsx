@@ -14,7 +14,7 @@ const TyvLicencias = () => {
     workersWithLicense,
     getWorkersAsync,
     getWorkersWithLicenseAsync,
-    updateWorkerLicense,
+    createWorkerLicense,
     resetLicenseForWorkerAsync
   } = useStore();
 
@@ -35,7 +35,7 @@ const TyvLicencias = () => {
           workerWithLicenseToEdit={workerWithLicenseToEdit}
           toggleCreateOrEdit={toggleCreateOrEdit}
           setToggleCreateOrEdit={setToggleCreateOrEdit}
-          updateWorkerLicense={updateWorkerLicense}
+          createWorkerLicense={createWorkerLicense}
           setToggleForm={setToggleForm}
         />
       ) : (
