@@ -95,6 +95,7 @@ const createLicense = (workerData, createWorkerLicense, setToggleForm) => {
 
 const editLicense = (
   workerWithLicenseData,
+  updateWorkerLicense,
   setToggleForm,
   setToggleCreateOrEdit
 ) => {
@@ -116,7 +117,7 @@ const editLicense = (
           licenceStartDate: values.starDate,
           licenceEndDate: values.finishDate,
         };
-        console.log(rut, newLicenseData);
+        updateWorkerLicense(rut, newLicenseData);
         resetForm();
         setToggleForm(false);
       }}
@@ -194,6 +195,7 @@ const LicenseForm = ({
   toggleCreateOrEdit,
   workerWithLicenseToEdit,
   createWorkerLicense,
+  updateWorkerLicense,
   setToggleForm,
   setToggleCreateOrEdit,
 }) => {
@@ -203,6 +205,7 @@ const LicenseForm = ({
         ? createLicense(workerToAddLicense, createWorkerLicense, setToggleForm)
         : editLicense(
             workerWithLicenseToEdit,
+            updateWorkerLicense,
             setToggleForm,
             setToggleCreateOrEdit
           )}
