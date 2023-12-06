@@ -5,7 +5,7 @@ import {
   createWorker,
   updateWorker,
   getAllWorkersWithLicense,
-  updateLincenseForWorker,
+  createLincenseForWorker,
   resetLicenseForWorker,
 } from "../api/workers.services";
 import { devtools } from "zustand/middleware";
@@ -150,7 +150,7 @@ const useStore = create(
     },
     createWorkerLicense: async (rut, licenseData) => {
       try {
-        const response = await updateLincenseForWorker(rut, licenseData);
+        const response = await createLincenseForWorker(rut, licenseData);
         if (
           response.data.message ===
           "Inicio y termino de licencia médica actualizada"
@@ -192,6 +192,28 @@ const useStore = create(
         console.log(error);
       }
     },
+    updateWorkerLicense: async(rut, licenseData) =>{
+        try {
+            const response = await updateLincenseForWorker(rut, licenseData);
+            if (
+              response.data.message ===
+              "Inicio y termino de licencia médica actualizada"
+            ) {
+              const worker = response.data.workerWithLicense[0];
+              set((state) => ({
+                workersWithLicense: [...state.workersWithLicense, worker],
+              }));
+              Swal.fire({
+                icon: "success",
+                text: "Licencia creada con éxito",
+                background: "#374be5",
+                color: "#fff",
+              });
+            }
+          } catch (error) {
+            console.log(error);
+          }
+    }
   }))
 );
 
