@@ -9,6 +9,7 @@ const TyvLicencias = () => {
   const [toggleCreateOrEdit, setToggleCreateOrEdit] = useState(true);
   const [workerToAddLicense, setWorkerToAddLicense] = useState();
   const [workerWithLicenseToEdit, setWorkerWithLicenseToEdit] = useState();
+  const [reset, setReset] = useState(false);
   const {
     workers,
     workersWithLicense,
@@ -17,18 +18,22 @@ const TyvLicencias = () => {
     createWorkerLicense,
     updateWorkerLicense,
     resetLicenseForWorkerAsync,
+    searchWorker,
   } = useStore();
 
   useEffect(() => {
     getWorkersAsync();
     getWorkersWithLicenseAsync();
-  },[]);
+  }, [reset]);
   return (
     <div className="grid grid-cols-2 h-4/5">
       <WorkerListToAddLicense
         workersData={workers}
         setToggleForm={setToggleForm}
         setWorkerToAddLicense={setWorkerToAddLicense}
+        reset={reset}
+        setReset={setReset}
+        setSearchWorker={searchWorker}
       />
       {toggleForm ? (
         <LicenseForm
