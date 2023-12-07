@@ -200,9 +200,16 @@ const useStore = create(
           "Inicio y termino de licencia médica actualizada"
         ) {
           const worker = response.data.workerWithLicense[0];
-          set((state) => ({
-            workersWithLicense: [...state.workersWithLicense, worker],
-          }));
+          set((state) =>
+            state.workersWithLicense.map((w) => {
+              if (w.id === worker.id) {
+                (w.licenceStartDate = worker.licenceStartDate),
+                  (w.licenceEndDate = worker.licenceEndDate);
+              } else {
+                w
+              }
+            })
+          );
           Swal.fire({
             icon: "success",
             text: "Licencia editada con éxito",

@@ -22,7 +22,7 @@ const TyvLicencias = () => {
   useEffect(() => {
     getWorkersAsync();
     getWorkersWithLicenseAsync();
-  }, [workersWithLicense]);
+  },[]);
   return (
     <div className="grid grid-cols-2 h-4/5">
       <WorkerListToAddLicense
