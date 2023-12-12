@@ -5,6 +5,7 @@ import { formatRut, RutFormat } from "@fdograph/rut-utilities";
 import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
 import { BsXSquare } from "react-icons/bs";
+import Swal from "sweetalert2";
 
 const valSchema = Yup.object().shape({
   starDate: Yup.string().required("Campo obligatorio"),
@@ -117,9 +118,29 @@ const editLicense = (
           licenceStartDate: values.starDate,
           licenceEndDate: values.finishDate,
         };
-        updateWorkerLicense(rut, newLicenseData);
-        resetForm();
-        setToggleForm(false);
+        Swal.fire({
+          text: "¿Estas seguro de editar la licencia?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "confirmar",
+          cancelButtonText: "cancelar",
+          color: "#fff",
+          background: "#374be5",
+          confirmButtonColor: "#E1BF1A",
+          cancelButtonColor: "#b8b6b6",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            updateWorkerLicense(rut, newLicenseData);
+            resetForm();
+            setToggleForm(false);
+            Swal.fire({
+              color: "#fff",
+              background: "#374be5",
+              text: "Licencia actualizada exitosamente",
+              icon: "success",
+            });
+          }
+        });
       }}
     >
       {({ errors, touched, values, setFieldValue }) => (
