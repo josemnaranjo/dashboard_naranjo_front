@@ -32,13 +32,24 @@ const PaginatedWorkersToLicense = ({
               {worker.name} {worker.lastName}
             </h2>
             <button
-              className="bg-secondary-middle text-white rounded-xl  hover:bg-secondary-dark hover:drop-shadow-md"
+              className="bg-secondary-middle
+               text-white rounded-xl  
+               hover:bg-secondary-dark 
+                 hover:drop-shadow-md
+               disabled:bg-gray-400/50 
+               disabled:border 
+               disabled:border-white 
+               disabled:hover:bg-gray-400/50 
+               disabled:hover:drop-shadow-none"
               onClick={() => {
                 handleToggleForm();
                 handleWorkerToAddlicense(worker);
               }}
+              disabled={worker.workerHasLicence}
             >
-              agregar licencia
+              {worker.workerHasLicence
+                ? "trabajador con licencia"
+                : "agregar licencia"}
             </button>
           </li>
         ))}
