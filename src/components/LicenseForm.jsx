@@ -4,7 +4,6 @@ import DatePicker from "react-datepicker";
 import { formatRut, RutFormat } from "@fdograph/rut-utilities";
 import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
-import { BsXSquare } from "react-icons/bs";
 import Swal from "sweetalert2";
 
 const valSchema = Yup.object().shape({
@@ -36,11 +35,8 @@ const createLicense = (workerData, createWorkerLicense, setToggleForm) => {
       }}
     >
       {({ errors, touched, setFieldValue, values }) => (
-        <Form className="bg-gray-300 text-white container mx-auto h-full w-96 rounded-xl border-2  border-secondary-middle">
-          <button className="mt-14 ml-10" onClick={handleToggleForm}>
-            <BsXSquare />
-          </button>
-          <div className="flex flex-col justify-center items-center gap-8 py-12">
+        <Form className=" flex justify-center items-center bg-gray-300 text-white container mx-auto h-full w-96 rounded-xl border-2  border-secondary-middle">
+          <div className="flex flex-col items-center gap-8">
             <div className="text-xl">
               <h1>
                 {workerData.name} {workerData.lastName}
@@ -87,6 +83,7 @@ const createLicense = (workerData, createWorkerLicense, setToggleForm) => {
             >
               registrar licencia
             </button>
+            <button onClick={handleToggleForm}>volver</button>
           </div>
         </Form>
       )}
@@ -144,11 +141,8 @@ const editLicense = (
       }}
     >
       {({ errors, touched, values, setFieldValue }) => (
-        <Form className="bg-gray-300 text-white container mx-auto w-96 h-full rounded-xl border-2 border-primary-middle">
-          <button className="mt-14 ml-10" onClick={handleToggleForm}>
-            <BsXSquare />
-          </button>
-          <div className=" flex flex-col justify-center items-center gap-8 py-12">
+        <Form className=" flex justify-center items-center bg-gray-300 text-white container mx-auto w-96 h-full rounded-xl border-2 border-primary-middle">
+          <div className=" flex flex-col justify-center items-center gap-5 py-12">
             <div className="text-xl">
               <h1>
                 {workerWithLicenseData.name} {workerWithLicenseData.lastName}
@@ -204,6 +198,7 @@ const editLicense = (
             >
               editar licencia
             </button>
+            <button onClick={handleToggleForm}>volver</button>
           </div>
         </Form>
       )}
