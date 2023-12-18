@@ -1,7 +1,8 @@
+import AttendanceForm from "../components/AttendanceForm";
 const AsistSalida = () => {
   return (
     <div>
-      <h1>Registro de salida</h1>
+        <AttendanceForm />
     </div>
   );
 };
