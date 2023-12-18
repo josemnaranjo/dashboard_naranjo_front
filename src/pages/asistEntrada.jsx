@@ -1,7 +1,8 @@
+import AttendanceForm from "../components/AttendanceForm";
 const AsistEntrada = () => {
   return (
     <div>
-      <h1>Registro de entrada</h1>
+      <AttendanceForm start={true}  />
     </div>
   );
 };
