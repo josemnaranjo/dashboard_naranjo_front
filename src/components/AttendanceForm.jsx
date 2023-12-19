@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 
 const today = dayjs().format("DD-MM-YYYY");
 const initialValues = {
-  date: today,
   rut: "",
 };
 
@@ -21,13 +20,35 @@ const validationRut = (value) => {
   return error;
 };
 
-const AttendanceForm = ({ start }) => {
+const AttendanceForm = ({ start, handleCheckIn }) => {
   return (
     <div>
       <Formik
         initialValues={initialValues}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          if (start) {
+            try {
+              const date = dayjs().format("YYYY-MM-DD");
+              const rut = { rut: values.rut };
+                handleCheckIn(date, rut);
+              Swal.fire({
+                icon: "success",
+                text: "registro de ingreso creado exitosamente",
+                background: "#374be5",
+                color: "#fff",
+              });
+            } catch (error) {
+              console.log(error);
+              Swal.fire({
+                icon: "error",
+                text: "error al crear el registro de ingreso",
+                background: "#374be5",
+                color: "#fff",
+              });
+            }
+          } else {
+            console.log("check out");
+          }
           resetForm();
         }}
       >
