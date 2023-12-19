@@ -1,8 +1,9 @@
 import AttendanceForm from "../components/AttendanceForm";
+import { checkOut } from "../api/workday.services";
 const AsistSalida = () => {
   return (
     <div>
-        <AttendanceForm />
+      <AttendanceForm handleCheckOut={checkOut} />
     </div>
   );
 };

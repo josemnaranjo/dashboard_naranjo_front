@@ -20,7 +20,7 @@ const validationRut = (value) => {
   return error;
 };
 
-const AttendanceForm = ({ start, handleCheckIn }) => {
+const AttendanceForm = ({ start, handleCheckIn, handleCheckOut }) => {
   return (
     <div>
       <Formik
@@ -30,7 +30,7 @@ const AttendanceForm = ({ start, handleCheckIn }) => {
             try {
               const date = dayjs().format("YYYY-MM-DD");
               const rut = { rut: values.rut };
-                handleCheckIn(date, rut);
+              handleCheckIn(date, rut);
               Swal.fire({
                 icon: "success",
                 text: "registro de ingreso creado exitosamente",
@@ -47,7 +47,25 @@ const AttendanceForm = ({ start, handleCheckIn }) => {
               });
             }
           } else {
-            console.log("check out");
+            try {
+              const date = dayjs().format("YYYY-MM-DD");
+              const rut = { rut: values.rut };
+              handleCheckOut(date, rut);
+              Swal.fire({
+                icon: "success",
+                text: "registro de salida creado exitosamente",
+                background: "#374be5",
+                color: "#fff",
+              });
+            } catch (error) {
+              console.log(error);
+              Swal.fire({
+                icon: "error",
+                text: "error al crear el registro de salida",
+                background: "#374be5",
+                color: "#fff",
+              });
+            }
           }
           resetForm();
         }}
