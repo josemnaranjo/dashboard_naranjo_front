@@ -1,7 +1,9 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 
 const PaginatedMonths = ({ monthsData, itemsPerPage }) => {
+  const navigate = useNavigate();
 
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
@@ -22,8 +24,15 @@ const PaginatedMonths = ({ monthsData, itemsPerPage }) => {
             className="bg-gray-300 text-white rounded-lg border-2 flex justify-around py-5 px-2"
           >
             <h2 className="w-24">{month.month}</h2>
-            <button className="bg-primary-middle hover:bg-primary-dark hover:drop-shadow-md rounded-lg px-2 text-lg">ver informe</button>
-            <button className="bg-secondary-middle hover:bg-secondary-dark hover:drop-shadow-md rounded-lg px-2 text-lg">descargar informe</button>
+            <button
+              className="bg-primary-middle hover:bg-primary-dark hover:drop-shadow-md rounded-lg px-2 text-lg"
+              onClick={() => navigate("/asistencia-informe-visual")}
+            >
+              ver informe
+            </button>
+            <button className="bg-secondary-middle hover:bg-secondary-dark hover:drop-shadow-md rounded-lg px-2 text-lg">
+              descargar informe
+            </button>
           </li>
         ))}
       </ul>
