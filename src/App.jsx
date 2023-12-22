@@ -35,7 +35,7 @@ function App() {
                   element={<AsistInformeGeneral />}
                 />
                 <Route
-                  path="/asistencia-informe-visual"
+                  path="/asistencia-informe-visual/:monthKey"
                   element={<AsistInformeVisual />}
                 />
                 <Route
