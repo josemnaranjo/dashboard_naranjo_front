@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useNavigate, Outlet } from "react-router-dom";
 import PaginatedMonths from "../components/PaginatedMonths";
-import AsistInformeVisual from "./asistInformeVisual";
 import dayjs from "dayjs";
 
 const AsistInformeGeneral = () => {
-  const [viewMonthList, setViewMonthList] = useState(true);
+  const navigate = useNavigate();
   const year = dayjs().year();
   const yearString = year.toString();
   const months = [
@@ -83,18 +82,12 @@ const AsistInformeGeneral = () => {
   ];
   return (
     <div>
-      {viewMonthList ? (
-        <PaginatedMonths
-          monthsData={months}
-          itemsPerPage={4}
-          setViewMonthList={setViewMonthList}
-        />
-      ) : (
-        <AsistInformeVisual
-          setViewMonthList={setViewMonthList}
-          monthsData={months}
-        />
-      )}
+      <PaginatedMonths
+        monthsData={months}
+        itemsPerPage={4}
+        navigate={navigate}
+      />
+      <Outlet context={months} />
     </div>
   );
 };

@@ -1,14 +1,11 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useNavigate } from "react-router-dom";
 
 const PaginatedMonths = ({
   monthsData,
   itemsPerPage,
-  setViewMonthList
+  navigate,
 }) => {
-  const navigate = useNavigate();
-
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = monthsData.slice(itemOffset, endOffset);
@@ -31,9 +28,7 @@ const PaginatedMonths = ({
             <button
               className="bg-primary-middle hover:bg-primary-dark hover:drop-shadow-md rounded-lg px-2 text-lg"
               onClick={() => {
-    
-                setViewMonthList(false);
-                navigate(`/asistencia-informe-visual/${month.key}`);
+                navigate(`informe-visual/${month.key}`);
               }}
             >
               ver informe

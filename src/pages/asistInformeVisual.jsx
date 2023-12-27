@@ -1,10 +1,13 @@
-import { useParams } from "react-router-dom";
-const AsistInformeVisual = ({ monthsData, setViewMonthList }) => {
+import { useParams, useOutletContext } from "react-router-dom";
+
+const AsistInformeVisual = () => {
+  const months = useOutletContext();
   const { monthKey } = useParams();
 
+  console.log(months);
   return (
     <div>
-      <h1>Asistencia informe visual</h1>
+      <h1>Asistencia informe visual {monthKey}</h1>
     </div>
   );
 };

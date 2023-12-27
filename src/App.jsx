@@ -33,11 +33,12 @@ function App() {
                 <Route
                   path="/asistencia-informe-general"
                   element={<AsistInformeGeneral />}
-                />
-                <Route
-                  path="/asistencia-informe-visual/:monthKey"
-                  element={<AsistInformeVisual />}
-                />
+                >
+                  <Route
+                    path="informe-visual/:monthKey"
+                    element={<AsistInformeVisual />}
+                  />
+                </Route>
                 <Route
                   path="/asistencia-general"
                   element={<AsistPrincipal />}
