@@ -1,9 +1,10 @@
 import { Card, Typography } from "@material-tailwind/react";
 
-//TODO: editar información e implementar tabla con material-tailwind
+//TODO: agregar paginación
 
 const TableReport = ({ reportInfo }) => {
-  const TABLE_HEAD = [
+  
+    const TABLE_HEAD = [
     "Nombre",
     "Apellido",
     "Rut",
@@ -14,7 +15,7 @@ const TableReport = ({ reportInfo }) => {
 
   return (
     <div>
-      <Card className="h-full w-full overflow-scroll text-black">
+      <Card className="h-full w-full overflow-scroll text-black mt-10">
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
@@ -36,7 +37,6 @@ const TableReport = ({ reportInfo }) => {
           </thead>
           <tbody>
             {reportInfo.map((data, index) => {
-              
               const isLast = index === reportInfo.length - 1;
               const classes = isLast
                 ? "p-4"

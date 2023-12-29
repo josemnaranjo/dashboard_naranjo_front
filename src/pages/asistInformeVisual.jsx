@@ -26,15 +26,17 @@ const AsistInformeVisual = () => {
   }, []);
 
   return (
-    <div className="absolute top-20 left-40 bg-slate-400 h-[40rem] w-[78rem] border border-black rounded-xl p-8 text-white">
-      <h1>Asistencia informe visual {monthKey}</h1>
-      <TableReport reportInfo={reportInfo} />
+    <div className="absolute top-20 left-40 bg-secondary-middle h-[40rem] w-[78rem] border border-black rounded-xl p-8 text-white">
+      <h1 className="text-center text-xl">
+        Informe de asistencia - {selectedMonth[0].month.toUpperCase()}
+      </h1>
       <button
         onClick={() => navigate("/asistencia-informe-general")}
-        className="border border-black rounded px-4"
+        className="border border-black rounded bg-primary-middle hover:bg-primary-dark hover:drop-shadow-md px-4 mt-10"
       >
         regresar
       </button>
+      <TableReport reportInfo={reportInfo} />
     </div>
   );
 };
