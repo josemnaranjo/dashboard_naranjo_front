@@ -22,7 +22,7 @@ const PaginatedMonths = ({
         {currentItems?.map((month) => (
           <li
             key={month.key}
-            className="bg-gray-300 text-white rounded-lg border-2 flex justify-around py-5 px-2"
+            className="bg-gray-300 text-white rounded-lg border border-black flex justify-around py-5 px-2 drop-shadow-lg"
           >
             <h2 className="w-24">{month.month}</h2>
             <button
@@ -45,7 +45,7 @@ const PaginatedMonths = ({
         onPageChange={handlePageClick}
         pageCount={pageCount}
         renderOnZeroPageCount={null}
-        className="w-96 mx-auto mt-14 flex justify-center gap-4 text-white bg-gray-300 rounded-lg border-2"
+        className="w-96 mx-auto mt-14 flex justify-center gap-4 text-white bg-gray-300 rounded-lg border border-black"
         previousLinkClassName="hover:text-primary-dark"
         nextLinkClassName="hover:text-primary-dark"
         activeClassName="text-primary-dark underline"
