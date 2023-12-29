@@ -27,7 +27,7 @@ const AsistInformeVisual = () => {
 
   return (
     <div className="absolute top-20 left-40 bg-secondary-middle h-[40rem] w-[78rem] border border-black rounded-xl p-8 text-white">
-      <h1 className="text-center text-xl">
+      <h1 className="text-center text-xl bg-secondary-dark rounded-xl shadow-lg border border-black">
         Informe de asistencia - {selectedMonth[0].month.toUpperCase()}
       </h1>
       <button
