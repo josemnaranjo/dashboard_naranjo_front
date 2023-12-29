@@ -18,7 +18,7 @@ const PaginatedMonths = ({
 
   return (
     <div>
-      <ul className="flex flex-col gap-5">
+      <ul className="flex flex-col gap-5 relative">
         {currentItems?.map((month) => (
           <li
             key={month.key}

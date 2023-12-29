@@ -87,7 +87,7 @@ const AsistInformeGeneral = () => {
         itemsPerPage={4}
         navigate={navigate}
       />
-      <Outlet context={months} />
+      <Outlet context={months}/>
     </div>
   );
 };
