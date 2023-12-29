@@ -26,14 +26,14 @@ const PaginatedMonths = ({
           >
             <h2 className="w-24">{month.month}</h2>
             <button
-              className="bg-primary-middle hover:bg-primary-dark hover:drop-shadow-md rounded-lg px-2 text-lg"
+              className="bg-primary-middle hover:bg-primary-dark hover:drop-shadow-md rounded-lg px-2 text-lg border border-black"
               onClick={() => {
                 navigate(`informe-visual/${month.key}`);
               }}
             >
               ver informe
             </button>
-            <button className="bg-secondary-middle hover:bg-secondary-dark hover:drop-shadow-md rounded-lg px-2 text-lg">
+            <button className="bg-secondary-middle hover:bg-secondary-dark hover:drop-shadow-md rounded-lg px-2 text-lg border border-black">
               descargar informe
             </button>
           </li>
