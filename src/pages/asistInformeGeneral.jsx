@@ -17,67 +17,67 @@ const AsistInformeGeneral = () => {
       key: 2,
       month: "febrero",
       startDate: yearString + "-02" + "-01",
-      endDate: yearString + "-01" + "-28",
+      endDate: yearString + "-02" + "-28",
     },
     {
       key: 3,
       month: "marzo",
       startDate: yearString + "-03" + "-01",
-      endDate: yearString + "-01" + "-31",
+      endDate: yearString + "-03" + "-31",
     },
     {
       key: 4,
       month: "abril",
       startDate: yearString + "-04" + "-01",
-      endDate: yearString + "-01" + "-30",
+      endDate: yearString + "-04" + "-30",
     },
     {
       key: 5,
       month: "mayo",
       startDate: yearString + "-05" + "-01",
-      endDate: yearString + "-01" + "-31",
+      endDate: yearString + "-05" + "-31",
     },
     {
       key: 6,
       month: "junio",
       startDate: yearString + "-06" + "-01",
-      endDate: yearString + "-01" + "-30",
+      endDate: yearString + "-06" + "-30",
     },
     {
       key: 7,
       month: "julio",
       startDate: yearString + "-07" + "-01",
-      endDate: yearString + "-01" + "-31",
+      endDate: yearString + "-07" + "-31",
     },
     {
       key: 8,
       month: "agosto",
       startDate: yearString + "-08" + "-01",
-      endDate: yearString + "-01" + "-31",
+      endDate: yearString + "-08" + "-31",
     },
     {
       key: 9,
       month: "septiembre",
       startDate: yearString + "-09" + "-01",
-      endDate: yearString + "-01" + "-30",
+      endDate: yearString + "-09" + "-30",
     },
     {
       key: 10,
       month: "octubre",
       startDate: yearString + "-10" + "-01",
-      endDate: yearString + "-01" + "-31",
+      endDate: yearString + "-10" + "-31",
     },
     {
       key: 11,
       month: "noviembre",
       startDate: yearString + "-11" + "-01",
-      endDate: yearString + "-01" + "-30",
+      endDate: yearString + "-11" + "-30",
     },
     {
       key: 12,
       month: "diciembre",
       startDate: yearString + "-12" + "-01",
-      endDate: yearString + "-01" + "-31",
+      endDate: yearString + "-12" + "-31",
     },
   ];
   return (
@@ -87,7 +87,7 @@ const AsistInformeGeneral = () => {
         itemsPerPage={4}
         navigate={navigate}
       />
-      <Outlet context={months}/>
+      <Outlet context={months} />
     </div>
   );
 };

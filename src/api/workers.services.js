@@ -20,3 +20,6 @@ export const createLincenseForWorker = async (rut, licenseData) =>
 
 export const resetLicenseForWorker = async (rut) =>
   await axios.post("http://localhost:8000/reset-licence", rut);
+
+export const getMonthReport = async (monthData) =>
+  await axios.post("http://localhost:8000/get-month-report", monthData);
